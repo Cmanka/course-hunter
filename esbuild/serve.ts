@@ -25,7 +25,7 @@ import liveServer from 'live-server';
     });
   liveServer.start({
     open: true,
-    port: +process.env.PORT || 8080,
+    port: 8080,
     root: 'public',
   });
 })();

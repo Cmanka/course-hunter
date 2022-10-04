@@ -1,8 +1,20 @@
+import { AppRoutes } from 'core/constants/app-routes';
 import React, { FC } from 'react';
-import { Wrapper } from './styled';
+
+import { Link, Routes, Wrapper } from './styled';
 
 const Header: FC = () => {
-  return <Wrapper>Header</Wrapper>;
+  return (
+    <Wrapper>
+      <Routes>
+        {Object.entries(AppRoutes).map(([label, route]) => (
+          <Link key={label} to={route}>
+            {label}
+          </Link>
+        ))}
+      </Routes>
+    </Wrapper>
+  );
 };
 
 export { Header };

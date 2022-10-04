@@ -94,8 +94,15 @@ export const GlobalStyle = styled.createGlobalStyle`
   }
   body {
     font-size: 18px;
+    height: 100%;
     line-height: 1;
     font-family: Arial, Tahoma, Verdana, sans-serif;
+    color: #000;
+  }
+  html,
+  #root {
+    height: 100%;
+    box-sizing: border-box;
   }
   article,
   aside,
@@ -142,6 +149,11 @@ export const GlobalStyle = styled.createGlobalStyle`
   a {
     text-decoration: none;
     transition: opacity 0.2s linear;
+    color: #000;
+
+    & :visited {
+      color: #000;
+    }
   }
   a:hover {
     text-decoration: none;

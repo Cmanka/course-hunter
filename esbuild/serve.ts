@@ -1,5 +1,5 @@
-import { build } from 'esbuild';
 import chokidar from 'chokidar';
+import { build } from 'esbuild';
 import liveServer from 'live-server';
 
 (async () => {

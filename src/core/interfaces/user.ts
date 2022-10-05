@@ -1,4 +1,4 @@
-import { AccountType } from 'core/constants/account-type';
+import { AccountType } from '../constants/account-type';
 
 export interface User {
   id: number;

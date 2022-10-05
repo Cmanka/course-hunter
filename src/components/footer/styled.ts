@@ -1,7 +1,5 @@
-import { Layout } from 'antd';
+import { Footer } from 'grommet/components/Footer';
 import styled from 'styled-components';
-
-const { Footer } = Layout;
 
 export const Wrapper = styled(Footer)`
   display: flex;

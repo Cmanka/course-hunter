@@ -1,6 +1,4 @@
-import { Layout } from 'antd';
+import { Page } from 'grommet/components/Page';
 import styled from 'styled-components';
 
-const { Content } = Layout;
-
-export const Wrapper = styled(Content)``;
+export const Wrapper = styled(Page)``;

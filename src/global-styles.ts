@@ -104,6 +104,17 @@ export const GlobalStyle = styled.createGlobalStyle`
     height: 100%;
     box-sizing: border-box;
   }
+  #root {
+    & > div {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      & > div {
+        flex: 1;
+      }
+    }
+  }
   article,
   aside,
   details,

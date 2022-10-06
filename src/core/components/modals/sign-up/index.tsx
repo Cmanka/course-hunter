@@ -1,10 +1,17 @@
+import { SignUpForm } from 'core/components/forms/sign-up';
 import { ModalInstance } from 'core/constants/modal-instance';
 import { createModalHook } from 'core/helpers/create-modal-hook';
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
-const SignUpModal: FC = () => {
-  return <div>sign up</div>;
-};
+import { Modal } from '..';
+
+const SignUpModal: FC = memo(() => {
+  return (
+    <Modal title="Sign Up">
+      <SignUpForm />
+    </Modal>
+  );
+});
 
 const useSignUpModal = createModalHook(ModalInstance.SignUp, (props) => () => (
   <SignUpModal {...props} />

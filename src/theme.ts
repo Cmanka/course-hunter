@@ -7,7 +7,6 @@ const theme: ThemeType = {
       focus: '#c2c2c2',
     },
   },
-  textInput: {},
 };
 
 export { theme };

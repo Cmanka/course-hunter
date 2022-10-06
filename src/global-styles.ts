@@ -105,7 +105,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     box-sizing: border-box;
   }
   #root {
-    & > div {
+    & > div:nth-child(2) {
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -169,5 +169,18 @@ export const GlobalStyle = styled.createGlobalStyle`
   a:hover {
     text-decoration: none;
     opacity: 0.6;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid #c2c2c2;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
 `;

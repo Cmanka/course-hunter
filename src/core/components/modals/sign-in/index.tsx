@@ -1,16 +1,15 @@
+import { SignInForm } from 'core/components/forms/sign-in';
 import { ModalInstance } from 'core/constants/modal-instance';
-import { SignInForm } from 'core/forms/sign-in';
 import { createModalHook } from 'core/helpers/create-modal-hook';
 import React, { FC, memo } from 'react';
 
-import { Header, Wrapper } from './styled';
+import { Modal } from '..';
 
 const SignInModal: FC = memo(() => {
   return (
-    <Wrapper>
-      <Header>Sign in</Header>
+    <Modal title="Sign In">
       <SignInForm />
-    </Wrapper>
+    </Modal>
   );
 });
 

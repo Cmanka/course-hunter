@@ -1,0 +1,21 @@
+{
+  "common": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "home": "Home",
+    "homeDesc": "Welcome to the home page",
+    "footerDesc": "Footer description",
+    "email": "Email",
+    "password": "Password",
+    "welcome": "Welcome to the system",
+    "username": "Username",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "errorPassword": "Password is incorrect",
+    "errorEmail": "Email is incorrect",
+    "errorFirstname": "Firstname is required",
+    "errorLastname": "Lastname is required",
+    "errorUsername": "Username is required",
+    "сonfirm": "Confirm"
+  }
+}

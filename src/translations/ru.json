@@ -1,0 +1,21 @@
+{
+  "common": {
+    "signIn": "Авторизация",
+    "signUp": "Регистрация",
+    "home": "Домашняя",
+    "homeDesc": "Добро пожаловать на домашнюю страницу",
+    "footerDesc": "Подвал описание",
+    "email": "Почта",
+    "password": "Пароль",
+    "username": "Никнейм",
+    "firstname": "Имя",
+    "lastname": "Фамилия",
+    "welcome": "Добро пожаловать в систему",
+    "errorPassword": "Пароль неверный",
+    "errorEmail": "Почта неверная",
+    "errorFirstname": "Имя неверное",
+    "errorLastname": "Фамилия неверная",
+    "errorUsername": "Никнейм неверный",
+    "сonfirm": "Подтвердить"
+  }
+}

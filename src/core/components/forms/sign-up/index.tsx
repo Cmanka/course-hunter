@@ -7,6 +7,7 @@ import { useQuery } from 'core/hooks/use-query';
 import { TextInput } from 'grommet';
 import React, { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { ConfirmButton, Wrapper } from './styled';
 import { SignUpForm } from './types';
@@ -21,6 +22,7 @@ const SignUpForm: FC = memo(() => {
     method: 'POST',
     query: QueryKey.Register,
   });
+  const { t } = useTranslation();
 
   const handleConfirm = handleSubmit((data) => {
     query(data);
@@ -29,35 +31,35 @@ const SignUpForm: FC = memo(() => {
   return (
     <Wrapper>
       <TextInput
-        {...register('username', { required: 'username is required field' })}
-        placeholder="username"
+        {...register('username', { required: 'errorUsername' })}
+        placeholder={t('username')}
       />
       <ErrorHelper error={errors.username} />
       <TextInput
         {...register('email', { validate: emailValidate })}
-        placeholder="email"
+        placeholder={t('email')}
         type="email"
       />
       <ErrorHelper error={errors.email} />
       <TextInput
-        {...register('firstname', { required: 'firstname is required field' })}
-        placeholder="firstname"
+        {...register('firstname', { required: 'errorFirstname' })}
+        placeholder={t('firstname')}
       />
       <ErrorHelper error={errors.firstname} />
       <TextInput
-        {...register('lastname', { required: 'lastname is required field' })}
-        placeholder="lastname"
+        {...register('lastname', { required: 'errorLastname' })}
+        placeholder={t('lastname')}
       />
       <ErrorHelper error={errors.lastname} />
       <PasswordInput
         register={register('password', {
           validate: passwordValidate,
         })}
-        placeholder="password"
+        placeholder={t('password')}
       />
       <ErrorHelper error={errors.password} />
       <ConfirmButton disabled={loading} primary onClick={handleConfirm}>
-        Confirm
+        {t('сonfirm')}
       </ConfirmButton>
     </Wrapper>
   );

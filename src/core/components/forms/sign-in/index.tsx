@@ -10,10 +10,12 @@ import { useQuery } from 'core/hooks/use-query';
 import { TextInput } from 'grommet';
 import React, { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 import { ConfirmButton, Wrapper } from './styled';
 import { SignInForm, SignInResponse } from './types';
+
 const SignInForm: FC = memo(() => {
   const {
     register,
@@ -24,13 +26,14 @@ const SignInForm: FC = memo(() => {
     method: 'POST',
     query: QueryKey.Login,
   });
+  const { t } = useTranslation();
   const { set } = useLocalStorage();
   const [, close] = useSignInModal();
 
   const handleConfirm = handleSubmit((data) => {
     query(data).then((user) => {
       if (user) {
-        toast('Welcome to the system', { type: 'success' });
+        toast(t('welcome'), { type: 'success' });
         set(StorageKey.Token, user.accessToken);
         close();
       }
@@ -41,7 +44,7 @@ const SignInForm: FC = memo(() => {
     <Wrapper>
       <TextInput
         {...register('email', { validate: emailValidate })}
-        placeholder="email"
+        placeholder={t('email')}
         type="email"
       />
       <ErrorHelper error={errors.email} />
@@ -49,11 +52,11 @@ const SignInForm: FC = memo(() => {
         register={register('password', {
           validate: passwordValidate,
         })}
-        placeholder="password"
+        placeholder={t('password')}
       />
       <ErrorHelper error={errors.password} />
       <ConfirmButton disabled={loading} primary onClick={handleConfirm}>
-        Confirm
+        {t('сonfirm')}
       </ConfirmButton>
     </Wrapper>
   );

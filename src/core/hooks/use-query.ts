@@ -1,7 +1,6 @@
 import { QueryKey } from 'core/constants/query-key';
 import { QueryMethod } from 'core/constants/query-method';
-import { useRef, useState } from 'react';
-import { Id, toast } from 'react-toastify';
+import { useState } from 'react';
 
 interface Options {
   query: QueryKey;
@@ -12,11 +11,9 @@ const useQuery = <Variables, Result>({ query, method }: Options) => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<Result>();
   const [error, setError] = useState();
-  const toastId = useRef<Id>();
 
   const handleFetch = (variables: Variables) => {
     setLoading(true);
-    toastId.current = toast('Fetching...', { type: 'info' });
     return fetch(`https://projectcoursehunter.herokuapp.com/${query}`, {
       method,
       headers: { 'Content-Type': 'application/json' },
@@ -29,7 +26,6 @@ const useQuery = <Variables, Result>({ query, method }: Options) => {
       })
       .catch(setError)
       .finally(() => {
-        toast.dismiss(toastId.current);
         setLoading(false);
       });
   };

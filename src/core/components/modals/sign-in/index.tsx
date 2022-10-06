@@ -7,7 +7,7 @@ import { Modal } from '..';
 
 const SignInModal: FC = memo(() => {
   return (
-    <Modal title="Sign In">
+    <Modal title="signIn">
       <SignInForm />
     </Modal>
   );

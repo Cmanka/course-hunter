@@ -2,11 +2,14 @@
   "name": "course-hunter",
   "version": "0.0.0",
   "license": "ISC",
+  "homepage": "https://cmanka.github.io/course-hunter/",
   "scripts": {
     "build": "ts-node esbuild/prod.ts",
     "dev": "ts-node esbuild/dev.ts",
     "prepare": "husky install",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "deploy": "gh-pages -d build",
+    "predeploy": "yarn run build"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -46,6 +49,7 @@
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "express": "^4.18.1",
+    "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "live-server": "^1.2.2",

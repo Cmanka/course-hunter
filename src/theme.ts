@@ -1,16 +1,13 @@
 import { ThemeType } from 'grommet';
 
 const theme: ThemeType = {
-  button: {
-    border: {
-      color: '#000',
-      width: '1.5px',
+  global: {
+    colors: {
+      brand: '#000',
+      focus: '#c2c2c2',
     },
-    primary: {
-      color: '#000',
-    },
-    secondary: {},
   },
+  textInput: {},
 };
 
 export { theme };

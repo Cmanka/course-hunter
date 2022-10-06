@@ -5,10 +5,7 @@ import React, { FC } from 'react';
 
 import { ButtonsWrapper, Link, RoutesWrapper, Wrapper } from './styled';
 
-const HEADER_ROUTES = [
-  { label: 'Home', path: AppRoutes.Home },
-  { label: 'Courses', path: AppRoutes.Courses },
-];
+const HEADER_ROUTES = [{ label: 'Home', path: AppRoutes.Home }];
 
 const Header: FC = () => {
   const [openSignIn] = useSignInModal();

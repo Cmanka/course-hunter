@@ -1,4 +1,4 @@
-import { Page } from 'grommet/components/Page';
+import { Page } from 'grommet';
 import styled from 'styled-components';
 
 export const Wrapper = styled(Page)``;

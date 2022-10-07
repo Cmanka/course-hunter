@@ -6,7 +6,7 @@ const useLocalStorage = () => {
   };
 
   const handleGetStorage = (key: keyof typeof StorageKey) => {
-    localStorage.getItem(key);
+    return localStorage.getItem(key);
   };
 
   const handleSetStorage = (key: keyof typeof StorageKey, value: string) => {

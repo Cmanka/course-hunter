@@ -1,4 +1,4 @@
-import { modalsState } from 'core/recoil/atom';
+import { modalsState } from 'core/recoil/modal';
 import { Layer } from 'grommet/components/Layer';
 import React, { FC } from 'react';
 import { useRecoilState } from 'recoil';

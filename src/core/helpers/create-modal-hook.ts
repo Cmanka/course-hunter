@@ -1,5 +1,5 @@
 import { ModalInstance } from 'core/constants/modal-instance';
-import { modalsState } from 'core/recoil/atom';
+import { modalsState } from 'core/recoil/modal';
 import { FC, memo } from 'react';
 import { useSetRecoilState } from 'recoil';
 

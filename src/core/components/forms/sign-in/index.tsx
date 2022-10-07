@@ -6,11 +6,13 @@ import { emailValidate } from 'core/helpers/email-validate';
 import { passwordValidate } from 'core/helpers/password-validate';
 import { useLocalStorage } from 'core/hooks/use-local-storage';
 import { useQuery } from 'core/hooks/use-query';
+import { tokenState } from 'core/recoil/token';
 import { TextInput } from 'grommet';
 import React, { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import { useSetRecoilState } from 'recoil';
 
 import { ConfirmButton, Wrapper } from './styled';
 import { SignInForm, SignInResponse } from './types';
@@ -28,12 +30,14 @@ const SignInForm: FC = memo(() => {
   const { t } = useTranslation();
   const { set } = useLocalStorage();
   const [, close] = useSignInModal();
+  const setToken = useSetRecoilState(tokenState);
 
   const handleConfirm = handleSubmit((data) => {
     query(data).then((user) => {
       if (user) {
         toast(t('welcome'), { type: 'success' });
         set('Token', user.accessToken);
+        setToken(user.accessToken);
         close();
       }
     });

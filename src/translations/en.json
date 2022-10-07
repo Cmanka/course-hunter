@@ -18,6 +18,7 @@
     "errorUsername": "Username is required",
     "сonfirm": "Confirm",
     "Russian": "Russian",
-    "English": "English"
+    "English": "English",
+    "logout": "Logout"
   }
 }

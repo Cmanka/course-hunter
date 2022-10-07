@@ -13,5 +13,5 @@ const resources = {
 i18n.use(initReactI18next).init({
   resources,
   defaultNS: 'common',
-  fallbackLng: Language.Russian,
+  fallbackLng: Language.English,
 });

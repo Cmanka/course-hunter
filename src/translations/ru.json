@@ -16,6 +16,8 @@
     "errorFirstname": "Имя неверное",
     "errorLastname": "Фамилия неверная",
     "errorUsername": "Никнейм неверный",
-    "сonfirm": "Подтвердить"
+    "сonfirm": "Подтвердить",
+    "Russian": "Русский",
+    "English": "Английский"
   }
 }

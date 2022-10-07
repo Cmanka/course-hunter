@@ -1,15 +1,15 @@
 import { StorageKey } from 'core/constants/storage-key';
 
 const useLocalStorage = () => {
-  const handleRemoveStorage = (key: StorageKey) => {
+  const handleRemoveStorage = (key: keyof typeof StorageKey) => {
     localStorage.removeItem(key);
   };
 
-  const handleGetStorage = (key: StorageKey) => {
+  const handleGetStorage = (key: keyof typeof StorageKey) => {
     localStorage.getItem(key);
   };
 
-  const handleSetStorage = (key: StorageKey, value: string) => {
+  const handleSetStorage = (key: keyof typeof StorageKey, value: string) => {
     localStorage.setItem(key, value);
   };
 

@@ -2,7 +2,6 @@ import { ErrorHelper } from 'core/components/error-helper';
 import { useSignInModal } from 'core/components/modals/sign-in';
 import { PasswordInput } from 'core/components/password-input';
 import { QueryKey } from 'core/constants/query-key';
-import { StorageKey } from 'core/constants/storage-key';
 import { emailValidate } from 'core/helpers/email-validate';
 import { passwordValidate } from 'core/helpers/password-validate';
 import { useLocalStorage } from 'core/hooks/use-local-storage';
@@ -34,7 +33,7 @@ const SignInForm: FC = memo(() => {
     query(data).then((user) => {
       if (user) {
         toast(t('welcome'), { type: 'success' });
-        set(StorageKey.Token, user.accessToken);
+        set('Token', user.accessToken);
         close();
       }
     });

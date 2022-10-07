@@ -1,3 +1,4 @@
+import { LanguageSelect } from 'core/components/language-select';
 import { useSignInModal } from 'core/components/modals/sign-in';
 import { useSignUpModal } from 'core/components/modals/sign-up';
 import { AppRoutes } from 'core/constants/app-routes';
@@ -32,6 +33,7 @@ const Header: FC = () => {
         ))}
       </RoutesWrapper>
       <ButtonsWrapper>
+        <LanguageSelect />
         <Button label={t`signIn`} primary onClick={handleSignIn} />
         <Button label={t`signUp`} secondary onClick={handleSignUp} />
       </ButtonsWrapper>

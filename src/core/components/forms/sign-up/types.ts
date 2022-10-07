@@ -5,3 +5,7 @@ export interface SignUpForm {
   lastname: string;
   password: string;
 }
+
+export interface SignUpResponse {
+  accessToken: string;
+}

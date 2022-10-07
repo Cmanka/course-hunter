@@ -1,6 +1,8 @@
 import { QueryKey } from 'core/constants/query-key';
 import { QueryMethod } from 'core/constants/query-method';
+import { ServerError } from 'core/interfaces/error';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 interface Options {
   query: QueryKey;
@@ -19,12 +21,19 @@ const useQuery = <Variables, Result>({ query, method }: Options) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(variables),
     })
-      .then((response) => response.json() as Result)
+      .then((response) => response.json() as Result | ServerError)
       .then((data) => {
+        if ('error' in data) {
+          throw new Error(data.error);
+        }
+
         setData(data);
         return data;
       })
-      .catch(setError)
+      .catch(({ message }) => {
+        setError(message);
+        toast(message, { type: 'error' });
+      })
       .finally(() => {
         setLoading(false);
       });

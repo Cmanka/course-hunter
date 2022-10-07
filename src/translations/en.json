@@ -16,6 +16,8 @@
     "errorFirstname": "Firstname is required",
     "errorLastname": "Lastname is required",
     "errorUsername": "Username is required",
-    "сonfirm": "Confirm"
+    "сonfirm": "Confirm",
+    "Russian": "Russian",
+    "English": "English"
   }
 }

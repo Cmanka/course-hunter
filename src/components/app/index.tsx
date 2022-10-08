@@ -5,7 +5,7 @@ import { AuthInit } from 'components/auth-init';
 import { ModalContainer } from 'components/modal-container';
 import { GlobalStyle } from 'global-styles';
 import { Grommet } from 'grommet';
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { RecoilRoot } from 'recoil';
@@ -13,7 +13,7 @@ import { theme } from 'theme';
 
 import { Router } from '../router';
 
-const App: FC = () => {
+const App: FC = memo(() => {
   return (
     <BrowserRouter>
       <RecoilRoot>
@@ -27,6 +27,6 @@ const App: FC = () => {
       </RecoilRoot>
     </BrowserRouter>
   );
-};
+});
 
 export { App };

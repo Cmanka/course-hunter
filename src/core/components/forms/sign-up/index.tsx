@@ -1,16 +1,19 @@
 import { ErrorHelper } from 'core/components/error-helper';
-import { useSignInModal } from 'core/components/modals/sign-in';
+import { useSignUpModal } from 'core/components/modals/sign-up';
 import { PasswordInput } from 'core/components/password-input';
 import { QueryKey } from 'core/constants/query-key';
 import { emailValidate } from 'core/helpers/email-validate';
 import { passwordValidate } from 'core/helpers/password-validate';
 import { useLocalStorage } from 'core/hooks/use-local-storage';
 import { useQuery } from 'core/hooks/use-query';
+import { tokenState } from 'core/recoil/token';
+import { userState } from 'core/recoil/user';
 import { TextInput } from 'grommet';
 import React, { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import { useSetRecoilState } from 'recoil';
 
 import { ConfirmButton, Wrapper } from './styled';
 import { SignUpForm, SignUpResponse } from './types';
@@ -21,19 +24,23 @@ const SignUpForm: FC = memo(() => {
     formState: { errors },
     handleSubmit,
   } = useForm<SignUpForm>();
-  const { loading, query } = useQuery<SignUpForm, SignUpResponse>({
+  const { loading, query } = useQuery<SignUpResponse, SignUpForm>({
     method: 'POST',
     query: QueryKey.Register,
   });
   const { t } = useTranslation();
   const { set } = useLocalStorage();
-  const [, close] = useSignInModal();
+  const [, close] = useSignUpModal();
+  const setToken = useSetRecoilState(tokenState);
+  const setUser = useSetRecoilState(userState);
 
   const handleConfirm = handleSubmit((data) => {
-    query(data).then((user) => {
-      if (user) {
+    query(data).then((response) => {
+      if (response) {
         toast(t('welcome'), { type: 'success' });
-        set('Token', user.accessToken);
+        set('Token', response.accessToken);
+        setToken(response.accessToken);
+        setUser(response.user);
         close();
       }
     });

@@ -1,4 +1,4 @@
-import { AccountType } from 'core/constants/account-type';
+import { User } from 'core/interfaces/user';
 
 export interface SignInForm {
   email: string;
@@ -7,6 +7,5 @@ export interface SignInForm {
 
 export interface SignInResponse {
   accessToken: string;
-  accountType: AccountType;
-  username: string;
+  user: User;
 }

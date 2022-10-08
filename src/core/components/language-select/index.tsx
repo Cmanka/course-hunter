@@ -11,7 +11,7 @@ const LanguageSelect: FC = () => {
     i18n: { changeLanguage },
   } = useTranslation();
   const [currentLanguage, setCurrentLanguage] =
-    useState<keyof typeof Language>('Russian');
+    useState<keyof typeof Language>('English');
 
   const handleChangeLanguage = ({ option: { value, label } }: Option) => {
     setCurrentLanguage(label);

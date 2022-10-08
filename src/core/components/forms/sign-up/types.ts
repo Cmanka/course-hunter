@@ -1,3 +1,5 @@
+import { User } from 'core/interfaces/user';
+
 export interface SignUpForm {
   username: string;
   email: string;
@@ -8,4 +10,5 @@ export interface SignUpForm {
 
 export interface SignUpResponse {
   accessToken: string;
+  user: User;
 }

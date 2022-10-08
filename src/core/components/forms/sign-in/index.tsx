@@ -7,6 +7,7 @@ import { passwordValidate } from 'core/helpers/password-validate';
 import { useLocalStorage } from 'core/hooks/use-local-storage';
 import { useQuery } from 'core/hooks/use-query';
 import { tokenState } from 'core/recoil/token';
+import { userState } from 'core/recoil/user';
 import { TextInput } from 'grommet';
 import React, { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
@@ -23,7 +24,7 @@ const SignInForm: FC = memo(() => {
     formState: { errors },
     handleSubmit,
   } = useForm<SignInForm>();
-  const { loading, query } = useQuery<SignInForm, SignInResponse>({
+  const { loading, query } = useQuery<SignInResponse, SignInForm>({
     method: 'POST',
     query: QueryKey.Login,
   });
@@ -31,13 +32,15 @@ const SignInForm: FC = memo(() => {
   const { set } = useLocalStorage();
   const [, close] = useSignInModal();
   const setToken = useSetRecoilState(tokenState);
+  const setUser = useSetRecoilState(userState);
 
   const handleConfirm = handleSubmit((data) => {
-    query(data).then((user) => {
-      if (user) {
+    query(data).then((response) => {
+      if (response) {
         toast(t('welcome'), { type: 'success' });
-        set('Token', user.accessToken);
-        setToken(user.accessToken);
+        set('Token', response.accessToken);
+        setToken(response.accessToken);
+        setUser(response.user);
         close();
       }
     });

@@ -1,9 +1,13 @@
 import { AccountType } from '../constants/account-type';
 
+interface Account {
+  type: AccountType;
+}
+
 export interface User {
   id: number;
   username: string;
   firstname: string;
   lastname: string;
-  accountType: AccountType;
+  account: Account;
 }

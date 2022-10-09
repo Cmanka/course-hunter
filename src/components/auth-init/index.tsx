@@ -8,7 +8,7 @@ import { FC, memo, useLayoutEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 
 const AuthInit: FC = memo(() => {
-  const { get } = useLocalStorage();
+  const { get, remove } = useLocalStorage();
   const { query } = useQuery<User>({
     method: 'GET',
     query: QueryKey.UserPersonal,
@@ -20,11 +20,15 @@ const AuthInit: FC = memo(() => {
   useLayoutEffect(() => {
     if (token) {
       setToken(token);
-      query().then((data) => {
-        if (data) {
-          setUser(data);
-        }
-      });
+      query()
+        .then((data) => {
+          if (data) {
+            setUser(data);
+          }
+        })
+        .catch(() => {
+          remove('Token');
+        });
     }
   }, [token]);
 

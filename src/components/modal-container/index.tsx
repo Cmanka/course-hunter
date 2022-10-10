@@ -1,7 +1,8 @@
-import { modalsState } from 'core/recoil/modal';
 import { Layer } from 'grommet/components/Layer';
 import React, { FC } from 'react';
 import { useRecoilState } from 'recoil';
+
+import { modalsState } from '@/core/recoil/modal';
 
 const ModalContainer: FC = () => {
   const [modals, setModals] = useRecoilState(modalsState);

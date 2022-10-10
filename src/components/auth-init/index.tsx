@@ -1,11 +1,12 @@
-import { QueryKey } from 'core/constants/query-key';
-import { useLocalStorage } from 'core/hooks/use-local-storage';
-import { useQuery } from 'core/hooks/use-query';
-import { User } from 'core/interfaces/user';
-import { tokenState } from 'core/recoil/token';
-import { userState } from 'core/recoil/user';
 import { FC, memo, useLayoutEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
+
+import { QueryKey } from '@/core/constants/query-key';
+import { useLocalStorage } from '@/core/hooks/use-local-storage';
+import { useQuery } from '@/core/hooks/use-query';
+import { User } from '@/core/interfaces/user';
+import { tokenState } from '@/core/recoil/token';
+import { userState } from '@/core/recoil/user';
 
 const AuthInit: FC = memo(() => {
   const { get, remove } = useLocalStorage();

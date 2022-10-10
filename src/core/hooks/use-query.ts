@@ -1,9 +1,9 @@
-import { QueryKey } from 'core/constants/query-key';
-import { QueryMethod } from 'core/constants/query-method';
-import { ServerError } from 'core/interfaces/error';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
+import { QueryKey } from '../constants/query-key';
+import { QueryMethod } from '../constants/query-method';
+import { ServerError } from '../interfaces/error';
 import { useLocalStorage } from './use-local-storage';
 
 interface Options {

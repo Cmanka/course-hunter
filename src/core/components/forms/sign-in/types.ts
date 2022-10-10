@@ -1,6 +1,6 @@
-import { User } from 'core/interfaces/user';
+import { User } from '@core/interfaces/user';
 
-export interface SignInForm {
+export interface Form {
   email: string;
   password: string;
 }

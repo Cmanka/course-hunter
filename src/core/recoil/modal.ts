@@ -1,6 +1,7 @@
-import { RecoilAtomKey } from 'core/constants/recoil-atom-key';
 import { FC } from 'react';
 import { atom } from 'recoil';
+
+import { RecoilAtomKey } from '../constants/recoil-atom-key';
 
 interface Modal<T> {
   id: string;

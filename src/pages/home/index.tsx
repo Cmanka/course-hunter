@@ -7,7 +7,7 @@ import { Wrapper } from './styled';
 
 const Home: FC = () => {
   const { t } = useTranslation();
-
+  console.log(import.meta.env.VITE_PORT);
   return (
     <Wrapper>
       <Heading textAlign="center">{t('homeDesc')}</Heading>

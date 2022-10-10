@@ -1,11 +1,13 @@
-import { ErrorBoundary } from 'components/error-boundary';
-import { Footer } from 'components/footer';
-import { Header } from 'components/header';
-import { AppRoutes } from 'core/constants/app-routes';
-import { Courses } from 'pages/courses';
-import { Home } from 'pages/home';
+import { AppRoutes } from '@constants/app-routes';
 import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import { Courses } from '@/pages/courses';
+import { Home } from '@/pages/home';
+
+import { ErrorBoundary } from '../error-boundary';
+import { Footer } from '../footer';
+import { Header } from '../header';
 
 const Router: FC = () => {
   return (

@@ -1,6 +1,6 @@
-import { User } from 'core/interfaces/user';
+import { User } from '@/core/interfaces/user';
 
-export interface SignUpForm {
+export interface Form {
   username: string;
   email: string;
   firstname: string;

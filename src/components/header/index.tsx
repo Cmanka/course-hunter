@@ -1,14 +1,15 @@
-import { LanguageSelect } from 'core/components/language-select';
-import { useSignInModal } from 'core/components/modals/sign-in';
-import { useSignUpModal } from 'core/components/modals/sign-up';
-import { AppRoutes } from 'core/constants/app-routes';
-import { useLocalStorage } from 'core/hooks/use-local-storage';
-import { tokenState } from 'core/recoil/token';
 import { Avatar, Button } from 'grommet';
 import { User } from 'grommet-icons';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRecoilState } from 'recoil';
+
+import { LanguageSelect } from '@/core/components/language-select';
+import { useSignInModal } from '@/core/components/modals/sign-in';
+import { useSignUpModal } from '@/core/components/modals/sign-up';
+import { AppRoutes } from '@/core/constants/app-routes';
+import { useLocalStorage } from '@/core/hooks/use-local-storage';
+import { tokenState } from '@/core/recoil/token';
 
 import { ButtonsWrapper, Link, RoutesWrapper, Wrapper } from './styled';
 

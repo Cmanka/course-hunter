@@ -1,7 +1,8 @@
-import { Language } from 'core/constants/language';
 import { Select } from 'grommet';
 import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { Language } from '@/core/constants/language';
 
 import { Option } from './types';
 

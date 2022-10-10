@@ -5,3 +5,4 @@ public/script.js.map
 .eslintcache
 build
 yarn-error.log
+.env

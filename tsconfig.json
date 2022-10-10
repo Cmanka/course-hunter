@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@core/*": ["./src/core/*"],
+      "@components/*": ["./src/core/components/*"],
+      "@constants/*": ["./src/core/constants/*"]
+    },
     "outDir": "./build/",
     "jsx": "react-jsx",
     "module": "ESNext",
@@ -17,11 +23,6 @@
     "skipLibCheck": true,
     "typeRoots": ["./node_modules/@types/", "./types/"]
   },
-  "include": ["src", "esbuild"],
-  "exclude": ["node_modules"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  }
+  "include": ["src", "vite", "vite.config.ts"],
+  "exclude": ["node_modules"]
 }

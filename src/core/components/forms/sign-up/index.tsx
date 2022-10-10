@@ -1,13 +1,3 @@
-import { ErrorHelper } from 'core/components/error-helper';
-import { useSignUpModal } from 'core/components/modals/sign-up';
-import { PasswordInput } from 'core/components/password-input';
-import { QueryKey } from 'core/constants/query-key';
-import { emailValidate } from 'core/helpers/email-validate';
-import { passwordValidate } from 'core/helpers/password-validate';
-import { useLocalStorage } from 'core/hooks/use-local-storage';
-import { useQuery } from 'core/hooks/use-query';
-import { tokenState } from 'core/recoil/token';
-import { userState } from 'core/recoil/user';
 import { TextInput } from 'grommet';
 import React, { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
@@ -15,16 +5,27 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { useSetRecoilState } from 'recoil';
 
+import { QueryKey } from '@/core/constants/query-key';
+import { emailValidate } from '@/core/helpers/email-validate';
+import { passwordValidate } from '@/core/helpers/password-validate';
+import { useLocalStorage } from '@/core/hooks/use-local-storage';
+import { useQuery } from '@/core/hooks/use-query';
+import { tokenState } from '@/core/recoil/token';
+import { userState } from '@/core/recoil/user';
+
+import { ErrorHelper } from '../../error-helper';
+import { useSignUpModal } from '../../modals/sign-up';
+import { PasswordInput } from '../../password-input';
 import { ConfirmButton, Wrapper } from './styled';
-import { SignUpForm, SignUpResponse } from './types';
+import { Form, SignUpResponse } from './types';
 
 const SignUpForm: FC = memo(() => {
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<SignUpForm>();
-  const { loading, query } = useQuery<SignUpResponse, SignUpForm>({
+  } = useForm<Form>();
+  const { loading, query } = useQuery<SignUpResponse, Form>({
     method: 'POST',
     query: QueryKey.Register,
   });

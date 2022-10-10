@@ -1,4 +1,4 @@
-import { Language } from 'core/constants/language';
+import { Language } from '@/core/constants/language';
 
 export interface Option {
   option: {

@@ -22,6 +22,8 @@
     "logout": "Выйти",
     "notFounded": "Страница не найдена",
     "update": "Обновить",
-    "userChanged": "Пользователь был изменён"
+    "userChanged": "Пользователь был изменён",
+    "accountType": "Тип аккаунта",
+    "changePassword": "Изменить пароль"
   }
 }

@@ -14,6 +14,7 @@ export const TopSection = styled(Box)`
 
 export const MainSection = styled(Box)`
   height: 100%;
+  padding: 25px 0px;
   justify-content: center;
   align-items: center;
 `;

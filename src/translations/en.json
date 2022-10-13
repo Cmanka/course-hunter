@@ -22,6 +22,8 @@
     "logout": "Logout",
     "notFounded": "Page not founded",
     "update": "Update",
-    "userChanged": "User has changed"
+    "userChanged": "User has changed",
+    "accountType": "Account Type",
+    "changePassword": "Change Password"
   }
 }

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { toast } from 'react-toastify';
 
+import { ApiUrl } from '../constants/api-url';
 import { QueryKey } from '../constants/query-key';
 import { QueryMethod } from '../constants/query-method';
 import { ServerError } from '../interfaces/error';
@@ -13,7 +14,7 @@ interface Options {
 }
 
 const useQuery = <Result, Variables = {}>({
-  api = 'https://projectcoursehunter.herokuapp.com',
+  api = ApiUrl.Python,
   query,
   method,
 }: Options) => {
@@ -23,33 +24,36 @@ const useQuery = <Result, Variables = {}>({
   const { get } = useLocalStorage();
   const token = get('Token');
 
-  const handleFetch = (variables?: Variables) => {
-    setLoading(true);
-    return fetch(`${api}/${query}`, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: token ? `Bearer ${token}` : '',
-      },
-      body: JSON.stringify(variables),
-    })
-      .then((response) => response.json() as Result | ServerError)
-      .then((data) => {
-        if ('detail' in data) {
-          throw new Error(data.detail);
-        }
+  const handleFetch = useCallback(
+    (variables?: Variables) => {
+      setLoading(true);
+      return fetch(`${api}/${query}`, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token ? `Bearer ${token}` : '',
+        },
+        body: JSON.stringify(variables),
+      })
+        .then((response) => response.json() as Result | ServerError)
+        .then((data) => {
+          if ('detail' in data) {
+            throw new Error(data.detail);
+          }
 
-        setData(data);
-        return data;
-      })
-      .catch(({ message }) => {
-        setError(message);
-        toast(message, { type: 'error' });
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+          setData(data);
+          return data;
+        })
+        .catch(({ message }) => {
+          setError(message);
+          toast(message, { type: 'error' });
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    },
+    [api, method, query, token]
+  );
 
   return { loading, query: handleFetch, data, error };
 };

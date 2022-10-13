@@ -35,7 +35,7 @@ const AuthInit: FC = memo(() => {
           remove('Token');
         });
     }
-  }, [token]);
+  }, [token, query, setToken, setUser, navigate, remove]);
 
   return null;
 });

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Language } from '@/core/constants/language';
 
+import { Wrapper } from './styled';
 import { Option } from './types';
 
 const LanguageSelect: FC = () => {
@@ -20,15 +21,17 @@ const LanguageSelect: FC = () => {
   };
 
   return (
-    <Select
-      labelKey="label"
-      valueLabel={t(currentLanguage)}
-      onChange={handleChangeLanguage}
-      options={Object.entries(Language).map(([label, value]) => ({
-        label: t(label),
-        value,
-      }))}
-    />
+    <Wrapper>
+      <Select
+        labelKey="label"
+        valueLabel={t(currentLanguage)}
+        onChange={handleChangeLanguage}
+        options={Object.entries(Language).map(([label, value]) => ({
+          label: t(label),
+          value,
+        }))}
+      />
+    </Wrapper>
   );
 };
 

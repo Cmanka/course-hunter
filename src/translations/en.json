@@ -19,6 +19,8 @@
     "сonfirm": "Confirm",
     "Russian": "Russian",
     "English": "English",
-    "logout": "Logout"
+    "logout": "Logout",
+    "notFounded": "Page not founded",
+    "update": "Update"
   }
 }

@@ -1,22 +1,23 @@
-import { Avatar, Button } from 'grommet';
+import { Button } from 'grommet';
 import { User } from 'grommet-icons';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 
-import { LanguageSelect } from '@/core/components/language-select';
 import { useSignInModal } from '@/core/components/modals/sign-in';
 import { useSignUpModal } from '@/core/components/modals/sign-up';
 import { AppRoutes } from '@/core/constants/app-routes';
 import { useLocalStorage } from '@/core/hooks/use-local-storage';
 import { tokenState } from '@/core/recoil/token';
 
-import { ButtonsWrapper, Link, RoutesWrapper, Wrapper } from './styled';
+import { Avatar, ButtonsWrapper, Link, RoutesWrapper, Wrapper } from './styled';
 
 const HEADER_ROUTES = [{ label: 'home', path: AppRoutes.Home }];
 
 const Header: FC = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [openSignIn] = useSignInModal();
   const [openSignUp] = useSignUpModal();
   const { remove } = useLocalStorage();
@@ -30,9 +31,14 @@ const Header: FC = () => {
     openSignUp();
   };
 
+  const handleToAccount = () => {
+    navigate(AppRoutes.Account);
+  };
+
   const handleLogout = () => {
     remove('Token');
     setToken('');
+    navigate(AppRoutes.Home);
   };
 
   return (
@@ -45,10 +51,9 @@ const Header: FC = () => {
         ))}
       </RoutesWrapper>
       <ButtonsWrapper>
-        <LanguageSelect />
         {token && (
           <>
-            <Avatar background="brand">
+            <Avatar background="brand" onClick={handleToAccount}>
               <User />
             </Avatar>
             <Button label={t`logout`} secondary onClick={handleLogout} />

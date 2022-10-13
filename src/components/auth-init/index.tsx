@@ -1,6 +1,8 @@
 import { FC, memo, useLayoutEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
+import { AppRoutes } from '@/core/constants/app-routes';
 import { QueryKey } from '@/core/constants/query-key';
 import { useLocalStorage } from '@/core/hooks/use-local-storage';
 import { useQuery } from '@/core/hooks/use-query';
@@ -14,6 +16,7 @@ const AuthInit: FC = memo(() => {
     method: 'GET',
     query: QueryKey.UserPersonal,
   });
+  const navigate = useNavigate();
   const token = get('Token');
   const setToken = useSetRecoilState(tokenState);
   const setUser = useSetRecoilState(userState);
@@ -28,6 +31,7 @@ const AuthInit: FC = memo(() => {
           }
         })
         .catch(() => {
+          navigate(AppRoutes.Home);
           remove('Token');
         });
     }

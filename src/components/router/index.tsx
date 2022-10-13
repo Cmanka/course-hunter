@@ -2,6 +2,8 @@ import { AppRoutes } from '@constants/app-routes';
 import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import { PrivateRoute } from '@/core/components/private-route';
+import { Account } from '@/pages/account';
 import { Courses } from '@/pages/courses';
 import { Home } from '@/pages/home';
 
@@ -19,6 +21,14 @@ const Router: FC = () => {
         <Routes>
           <Route path={AppRoutes.Home} element={<Home />} />
           <Route path={AppRoutes.Courses} element={<Courses />} />
+          <Route
+            path={AppRoutes.Account}
+            element={
+              <PrivateRoute>
+                <Account />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </ErrorBoundary>
       <ErrorBoundary>

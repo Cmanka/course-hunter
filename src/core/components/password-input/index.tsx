@@ -6,7 +6,7 @@ import { Wrapper } from './styled';
 import { PasswordInputProps } from './types';
 
 const PasswordInput: FC<PasswordInputProps> = memo(
-  ({ placeholder, register }) => {
+  ({ placeholder, register, disabled }) => {
     const [reveal, setReveal] = useState(false);
 
     const handleReveal = () => {
@@ -20,9 +20,11 @@ const PasswordInput: FC<PasswordInputProps> = memo(
           placeholder={placeholder}
           plain
           type={reveal ? 'text' : 'password'}
+          disabled={disabled}
         />
         <Button
           icon={reveal ? <FormView /> : <Hide />}
+          disabled={disabled}
           onClick={handleReveal}
         />
       </Wrapper>

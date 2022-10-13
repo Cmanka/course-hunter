@@ -7,7 +7,7 @@ import { ServerError } from '../interfaces/error';
 import { useLocalStorage } from './use-local-storage';
 
 interface Options {
-  query: QueryKey;
+  query: QueryKey | string;
   method: keyof typeof QueryMethod;
   api?: string;
 }

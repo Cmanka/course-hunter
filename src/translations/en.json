@@ -21,6 +21,7 @@
     "English": "English",
     "logout": "Logout",
     "notFounded": "Page not founded",
-    "update": "Update"
+    "update": "Update",
+    "userChanged": "User has changed"
   }
 }

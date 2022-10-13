@@ -4,10 +4,6 @@ export interface AccountFormProps {
   user: User;
 }
 
-export interface AccountFormHook {
-  username: string;
-  firstname: string;
-  lastname: string;
-  email: string;
+export interface AccountFormHook extends Omit<User, 'id'> {
   password: string;
 }

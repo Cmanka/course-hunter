@@ -4,4 +4,5 @@ export enum QueryKey {
   UserPersonal = 'api/users/personal/',
   UserUpdate = 'api/users/:id/',
   News = 'news/',
+  NewsDetails = 'news/:id/',
 }

@@ -24,16 +24,14 @@ const AuthInit: FC = memo(() => {
   useLayoutEffect(() => {
     if (token) {
       setToken(token);
-      query()
-        .then((data) => {
-          if (data) {
-            setUser(data);
-          }
-        })
-        .catch(() => {
+      query().then((data) => {
+        if (data) {
+          setUser(data);
+        } else {
           navigate(AppRoutes.Home);
           remove('Token');
-        });
+        }
+      });
     }
   }, [token, query, setToken, setUser, navigate, remove]);
 

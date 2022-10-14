@@ -24,6 +24,7 @@
     "update": "Update",
     "userChanged": "User has changed",
     "accountType": "Account Type",
-    "changePassword": "Change Password"
+    "changePassword": "Change Password",
+    "toDetail": "Go to detail"
   }
 }

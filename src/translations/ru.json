@@ -24,6 +24,7 @@
     "update": "Обновить",
     "userChanged": "Пользователь был изменён",
     "accountType": "Тип аккаунта",
-    "changePassword": "Изменить пароль"
+    "changePassword": "Изменить пароль",
+    "toDetail": "Перейти на детальную страницу"
   }
 }

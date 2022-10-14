@@ -11,15 +11,15 @@ interface Options {
   query: QueryKey | string;
   method: keyof typeof QueryMethod;
   api?: string;
+  isQuery?: boolean;
 }
 
-const useQuery = <Result, Variables = {}>({
-  api = ApiUrl.Python,
-  query,
-  method,
-}: Options) => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<Result>();
+const useQuery = <Result, Variables = {}>(
+  { api = ApiUrl.Python, query, method, isQuery = false }: Options,
+  defaultValue = null as Result
+) => {
+  const [loading, setLoading] = useState(isQuery);
+  const [data, setData] = useState<Result>(defaultValue);
   const [error, setError] = useState();
   const { get } = useLocalStorage();
   const token = get('Token');

@@ -6,3 +6,4 @@ public/script.js.map
 build
 yarn-error.log
 .env
+dist

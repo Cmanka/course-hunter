@@ -5,7 +5,6 @@ import { Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from '@/core/components/private-route';
 import { Account } from '@/pages/account';
 import { Home } from '@/pages/home';
-import { NewsDetails } from '@/pages/news-detail';
 
 import { ErrorBoundary } from '../error-boundary';
 import { Footer } from '../footer';
@@ -20,7 +19,6 @@ const Router: FC = () => {
       <ErrorBoundary>
         <Routes>
           <Route path={AppRoutes.Home} element={<Home />} />
-          <Route path={AppRoutes.NewsDetail} element={<NewsDetails />} />
           <Route
             path={AppRoutes.Account}
             element={

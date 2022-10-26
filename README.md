@@ -8,4 +8,4 @@
 - Grommet
 - Styled-components
 - React hook form
-- Esbuild
+- Vite

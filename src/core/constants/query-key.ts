@@ -3,6 +3,5 @@ export enum QueryKey {
   Register = 'api/users/register/',
   UserPersonal = 'api/users/personal/',
   UserUpdate = 'api/users/:id/',
-  News = 'news/',
-  NewsDetails = 'news/:id/',
+  Course = 'api/courses/',
 }

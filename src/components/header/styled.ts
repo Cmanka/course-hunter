@@ -1,13 +1,21 @@
-import { Avatar as UIAvatar, Header } from 'grommet/components';
+import { Avatar as UIAvatar, Header } from 'grommet';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Wrapper = styled(Header)`
-  display: flex;
-  align-items: center;
-  padding: 15px 20px;
+import { Container } from '@/core/styles/container';
+
+export const OuterWrapper = styled(Header)`
   background-color: #fff;
   box-shadow: 0 2px 8px #f0f1f2;
+`;
+
+export const InnerWrapper = styled(Container)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: space-between;
 `;
 
 export const RoutesWrapper = styled.div`

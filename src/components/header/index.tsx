@@ -11,7 +11,14 @@ import { AppRoutes } from '@/core/constants/app-routes';
 import { useLocalStorage } from '@/core/hooks/use-local-storage';
 import { tokenState } from '@/core/recoil/token';
 
-import { Avatar, ButtonsWrapper, Link, RoutesWrapper, Wrapper } from './styled';
+import {
+  Avatar,
+  ButtonsWrapper,
+  InnerWrapper,
+  Link,
+  OuterWrapper,
+  RoutesWrapper,
+} from './styled';
 
 const HEADER_ROUTES = [{ label: 'home', path: AppRoutes.Home }];
 
@@ -42,31 +49,33 @@ const Header: FC = () => {
   };
 
   return (
-    <Wrapper>
-      <RoutesWrapper>
-        {HEADER_ROUTES.map(({ label, path }) => (
-          <Link key={label} to={path}>
-            {t(label)}
-          </Link>
-        ))}
-      </RoutesWrapper>
-      <ButtonsWrapper>
-        {token && (
-          <>
-            <Avatar background="brand" onClick={handleToAccount}>
-              <User />
-            </Avatar>
-            <Button label={t`logout`} secondary onClick={handleLogout} />
-          </>
-        )}
-        {!token && (
-          <>
-            <Button label={t`signIn`} primary onClick={handleSignIn} />
-            <Button label={t`signUp`} secondary onClick={handleSignUp} />
-          </>
-        )}
-      </ButtonsWrapper>
-    </Wrapper>
+    <OuterWrapper>
+      <InnerWrapper>
+        <RoutesWrapper>
+          {HEADER_ROUTES.map(({ label, path }) => (
+            <Link key={label} to={path}>
+              {t(label)}
+            </Link>
+          ))}
+        </RoutesWrapper>
+        <ButtonsWrapper>
+          {token && (
+            <>
+              <Avatar background="brand" onClick={handleToAccount}>
+                <User />
+              </Avatar>
+              <Button label={t`logout`} secondary onClick={handleLogout} />
+            </>
+          )}
+          {!token && (
+            <>
+              <Button label={t`signIn`} primary onClick={handleSignIn} />
+              <Button label={t`signUp`} secondary onClick={handleSignUp} />
+            </>
+          )}
+        </ButtonsWrapper>
+      </InnerWrapper>
+    </OuterWrapper>
   );
 };
 

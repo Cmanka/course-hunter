@@ -1,14 +1,13 @@
-import { Heading } from 'grommet';
-import { Home as HomeIcon } from 'grommet-icons';
 import React, { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Categories } from '@/core/components/categories';
 import { Loader } from '@/core/components/loader';
 import { QueryKey } from '@/core/constants/query-key';
 import { useQuery } from '@/core/hooks/use-query';
 import { Course } from '@/core/interfaces/course';
 
-import { Wrapper } from './styled';
+import { SubTitle, Title, Wrapper } from './styled';
 
 const Home: FC = () => {
   const { t } = useTranslation();
@@ -29,8 +28,9 @@ const Home: FC = () => {
 
   return (
     <Wrapper>
-      <Heading textAlign="center">{t('homeDesc')}</Heading>
-      <HomeIcon size="88px" color="#000" />
+      <Title>{t('titleHome')}</Title>
+      <SubTitle>{t('subTitleHome')}</SubTitle>
+      <Categories />
     </Wrapper>
   );
 };

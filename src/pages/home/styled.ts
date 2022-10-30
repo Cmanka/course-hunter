@@ -1,27 +1,22 @@
-import { Box, Page, Text } from 'grommet';
+import { Text } from 'grommet';
 import styled from 'styled-components';
 
-export const Wrapper = styled(Page)`
-  flex: 1;
-  align-items: center;
-  text-transform: uppercase;
-  gap: 80px;
+import { Container } from '@/core/styles/container';
+
+export const Wrapper = styled(Container)`
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  & > * {
+    margin-bottom: 15px;
+  }
 `;
 
-export const CarouselWrapper = styled(Box)`
-  width: 100%;
-  height: 25vh;
-  padding: 20px;
+export const Title = styled(Text)`
+  font-size: 28px;
+  font-weight: 700;
 `;
 
-export const CarouselContent = styled(Box)`
-  padding-top: 45px;
-  align-items: center;
-  gap: 10px;
-  justify-content: center;
-`;
-
-export const Link = styled(Text)`
-  text-decoration: underline;
-  cursor: pointer;
+export const SubTitle = styled(Text)`
+  max-width: 620px;
 `;

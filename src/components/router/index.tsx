@@ -6,6 +6,7 @@ import { PrivateRoute } from '@/core/components/private-route';
 import { Account } from '@/pages/account';
 import { Home } from '@/pages/home';
 
+import { Banner } from '../banner';
 import { ErrorBoundary } from '../error-boundary';
 import { Footer } from '../footer';
 import { Header } from '../header';
@@ -16,6 +17,7 @@ const Router: FC = () => {
       <ErrorBoundary>
         <Header />
       </ErrorBoundary>
+      <Banner />
       <ErrorBoundary>
         <Routes>
           <Route path={AppRoutes.Home} element={<Home />} />

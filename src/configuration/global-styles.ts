@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { theme } from './theme';
+
 const styled = { createGlobalStyle };
 
 export const GlobalStyle = styled.createGlobalStyle`
@@ -97,7 +99,8 @@ export const GlobalStyle = styled.createGlobalStyle`
     height: 100%;
     line-height: 1;
     font-family: Arial, Tahoma, Verdana, sans-serif;
-    color: #000;
+    color: #fff;
+    background-color: ${theme.global?.colors?.['background-contrast']};
   }
   html,
   #root {
@@ -160,10 +163,10 @@ export const GlobalStyle = styled.createGlobalStyle`
   a {
     text-decoration: none;
     transition: opacity 0.2s linear;
-    color: #000;
+    color: #fff;
 
     & :visited {
-      color: #000;
+      color: #fff;
     }
   }
   a:hover {

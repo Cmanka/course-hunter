@@ -1,4 +1,4 @@
-import { Text } from 'grommet';
+import { Box, Text } from 'grommet';
 import styled from 'styled-components';
 
 import { Container } from '@/core/styles/container';
@@ -19,4 +19,17 @@ export const Title = styled(Text)`
 
 export const SubTitle = styled(Text)`
   max-width: 620px;
+`;
+
+export const CoursesWrapper = styled(Box)`
+  & > div {
+    margin-bottom: 20px;
+  }
+`;
+
+export const CourseTitle = styled(Text)`
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 40px;
 `;

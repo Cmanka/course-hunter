@@ -2,11 +2,12 @@ import { Avatar as UIAvatar, Header } from 'grommet';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { theme } from '@/configuration/theme';
 import { Container } from '@/core/styles/container';
 
 export const OuterWrapper = styled(Header)`
-  background-color: #fff;
-  box-shadow: 0 2px 8px #f0f1f2;
+  background-color: ${theme.global?.colors?.['background-contrast']};
+  /* box-shadow: 0 2px 8px #444; */
 `;
 
 export const InnerWrapper = styled(Container)`

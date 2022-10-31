@@ -27,6 +27,7 @@
     "changePassword": "Change Password",
     "toDetail": "Go to detail",
     "titleHome": "Welcome to the Course Hunter",
-    "subTitleHome": "A resource of programming video tutorials for developers. Take your profile knowledge from us, because we're the fucking best. Seriously."
+    "subTitleHome": "A resource of programming video tutorials for developers. Take your profile knowledge from us, because we're the fucking best. Seriously.",
+    "courseTitle": "Last added courses"
   }
 }

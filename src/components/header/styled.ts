@@ -3,11 +3,10 @@ import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { theme } from '@/configuration/theme';
-import { Container } from '@/core/styles/container';
+import { Container } from '@/shared/styles/container';
 
 export const OuterWrapper = styled(Header)`
   background-color: ${theme.global?.colors?.['background-contrast']};
-  /* box-shadow: 0 2px 8px #444; */
 `;
 
 export const InnerWrapper = styled(Container)`

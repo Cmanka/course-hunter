@@ -4,9 +4,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@pages/*": ["./src/pages/*"],
-      "@core/*": ["./src/core/*"],
-      "@components/*": ["./src/core/components/*"],
-      "@constants/*": ["./src/core/constants/*"]
+      "@shared/*": ["./src/shared/*"],
+      "@components/*": ["./src/shared/components/*"],
+      "@constants/*": ["./src/shared/constants/*"]
     },
     "outDir": "./build/",
     "jsx": "react-jsx",
@@ -21,7 +21,7 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "typeRoots": ["./node_modules/@types/", "./types/"]
+    "typeRoots": ["./node_modules/@types/", "./src/types/"]
   },
   "include": ["src", "vite", "vite.config.ts"],
   "exclude": ["node_modules"]

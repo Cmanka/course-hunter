@@ -94,6 +94,10 @@ export const GlobalStyle = styled.createGlobalStyle`
     vertical-align: baseline;
     outline: none;
   }
+  html {
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
+  }
   body {
     font-size: 18px;
     height: 100%;
@@ -168,6 +172,12 @@ export const GlobalStyle = styled.createGlobalStyle`
     & :visited {
       color: #fff;
     }
+  }
+  button {
+    text-transform: uppercase !important;
+    color: #fff;
+    font-size: 14px !important;
+    letter-spacing: 1.25px;
   }
   a:hover {
     text-decoration: none;

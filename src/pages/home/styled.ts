@@ -1,7 +1,7 @@
 import { Box, Text } from 'grommet';
 import styled from 'styled-components';
 
-import { Container } from '@/core/styles/container';
+import { Container } from '@/shared/styles/container';
 
 export const Wrapper = styled(Container)`
   padding-top: 60px;

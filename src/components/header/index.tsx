@@ -5,11 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 
-import { useSignInModal } from '@/core/components/modals/sign-in';
-import { useSignUpModal } from '@/core/components/modals/sign-up';
-import { AppRoutes } from '@/core/constants/app-routes';
-import { useLocalStorage } from '@/core/hooks/use-local-storage';
-import { tokenState } from '@/core/recoil/token';
+import { useSignInModal } from '@/shared/components/modals/sign-in';
+import { useSignUpModal } from '@/shared/components/modals/sign-up';
+import { AppRoutes } from '@/shared/constants/app-routes';
+import { useLocalStorage } from '@/shared/hooks/use-local-storage';
+import { tokenState } from '@/shared/recoil/token';
 
 import {
   Avatar,

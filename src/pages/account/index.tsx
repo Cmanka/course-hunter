@@ -3,9 +3,9 @@ import { User } from 'grommet-icons';
 import React, { FC } from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { AccountForm } from '@/core/components/forms/account';
-import { Loader } from '@/core/components/loader';
-import { userState } from '@/core/recoil/user';
+import { AccountForm } from '@/shared/components/forms/account';
+import { Loader } from '@/shared/components/loader';
+import { userState } from '@/shared/recoil/user';
 
 import { MainSection, TopSection, Wrapper } from './styled';
 

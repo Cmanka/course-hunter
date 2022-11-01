@@ -2,39 +2,25 @@ import { AppRoutes } from '@constants/app-routes';
 import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { PrivateRoute } from '@/core/components/private-route';
 import { Account } from '@/pages/account';
+import { CourseDetail } from '@/pages/course-detail';
 import { Home } from '@/pages/home';
-
-import { Banner } from '../banner';
-import { ErrorBoundary } from '../error-boundary';
-import { Footer } from '../footer';
-import { Header } from '../header';
+import { PrivateRoute } from '@/shared/components/private-route';
 
 const Router: FC = () => {
   return (
-    <>
-      <ErrorBoundary>
-        <Header />
-      </ErrorBoundary>
-      <Banner />
-      <ErrorBoundary>
-        <Routes>
-          <Route path={AppRoutes.Home} element={<Home />} />
-          <Route
-            path={AppRoutes.Account}
-            element={
-              <PrivateRoute>
-                <Account />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <Footer />
-      </ErrorBoundary>
-    </>
+    <Routes>
+      <Route path={AppRoutes.Home} element={<Home />} />
+      <Route path={AppRoutes.CoursesDetail} element={<CourseDetail />} />
+      <Route
+        path={AppRoutes.Account}
+        element={
+          <PrivateRoute>
+            <Account />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
   );
 };
 

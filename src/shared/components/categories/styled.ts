@@ -17,6 +17,10 @@ export const Card = styled(Link)`
   background-color: ${theme.global?.colors?.brand};
   color: white;
 
+  :hover {
+    background-color: #7f00ac;
+  }
+
   & > img {
     width: 26px;
     height: 26px;

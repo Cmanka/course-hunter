@@ -166,7 +166,7 @@ export const GlobalStyle = styled.createGlobalStyle`
   }
   a {
     text-decoration: none;
-    transition: opacity 0.2s linear;
+    transition: 0.2s linear;
     color: #fff;
 
     & :visited {
@@ -181,7 +181,6 @@ export const GlobalStyle = styled.createGlobalStyle`
   }
   a:hover {
     text-decoration: none;
-    opacity: 0.6;
   }
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

@@ -6,7 +6,8 @@
       "@pages/*": ["./src/pages/*"],
       "@shared/*": ["./src/shared/*"],
       "@components/*": ["./src/shared/components/*"],
-      "@constants/*": ["./src/shared/constants/*"]
+      "@constants/*": ["./src/shared/constants/*"],
+      "@assets/*": ["./src/assets/*"]
     },
     "outDir": "./build/",
     "jsx": "react-jsx",

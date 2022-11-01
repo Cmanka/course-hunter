@@ -1,4 +1,4 @@
-import { Avatar as UIAvatar, Header } from 'grommet';
+import { Avatar as UIAvatar, Header, Image } from 'grommet';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -31,5 +31,9 @@ export const ButtonsWrapper = styled.div`
 export const Link = styled(RouterLink)``;
 
 export const Avatar = styled(UIAvatar)`
+  cursor: pointer;
+`;
+
+export const Logo = styled(Image)`
   cursor: pointer;
 `;

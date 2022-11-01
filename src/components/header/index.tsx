@@ -1,3 +1,4 @@
+import logo from '@assets/header-logo.svg';
 import { Button } from 'grommet';
 import { User } from 'grommet-icons';
 import React, { FC } from 'react';
@@ -15,12 +16,9 @@ import {
   Avatar,
   ButtonsWrapper,
   InnerWrapper,
-  Link,
+  Logo,
   OuterWrapper,
-  RoutesWrapper,
 } from './styled';
-
-const HEADER_ROUTES = [{ label: 'home', path: AppRoutes.Home }];
 
 const Header: FC = () => {
   const { t } = useTranslation();
@@ -48,16 +46,14 @@ const Header: FC = () => {
     navigate(AppRoutes.Home);
   };
 
+  const handleHome = () => {
+    navigate(AppRoutes.Home);
+  };
+
   return (
     <OuterWrapper>
       <InnerWrapper>
-        <RoutesWrapper>
-          {HEADER_ROUTES.map(({ label, path }) => (
-            <Link key={label} to={path}>
-              {t(label)}
-            </Link>
-          ))}
-        </RoutesWrapper>
+        <Logo src={logo} onClick={handleHome} />
         <ButtonsWrapper>
           {token && (
             <>

@@ -12,29 +12,27 @@ import { userState } from '@/shared/recoil/user';
 
 const AuthInit: FC = memo(() => {
   const { get, remove } = useLocalStorage();
-  const { query } = useQuery<User>({
-    method: 'GET',
-    query: QueryKey.UserPersonal,
-    isQuery: false,
-  });
   const navigate = useNavigate();
-  const token = get('Token');
   const setToken = useSetRecoilState(tokenState);
   const setUser = useSetRecoilState(userState);
+  const token = get('Token');
+  const { data } = useQuery<User>({
+    method: 'GET',
+    query: QueryKey.UserPersonal,
+    isFetch: Boolean(token),
+  });
 
   useLayoutEffect(() => {
     if (token) {
       setToken(token);
-      query().then((data) => {
-        if (data) {
-          setUser(data);
-        } else {
-          navigate(AppRoutes.Home);
-          remove('Token');
-        }
-      });
+      if (data) {
+        setUser(data);
+      } else {
+        navigate(AppRoutes.Home);
+        remove('Token');
+      }
     }
-  }, [token, query, setToken, setUser, navigate, remove]);
+  }, [data, navigate, remove, setToken, setUser, token]);
 
   return null;
 });

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 
 import { AppRoutes } from '@/shared/constants/app-routes';
 import { QueryKey } from '@/shared/constants/query-key';
@@ -9,17 +9,13 @@ import { Category } from '@/shared/interfaces/category';
 import { Card, Wrapper } from './styled';
 
 const Categories: FC = () => {
-  const { data, query } = useQuery<Category[]>(
+  const { data } = useQuery<Category[]>(
     {
       method: 'GET',
       query: QueryKey.Category,
     },
     []
   );
-
-  useEffect(() => {
-    query();
-  }, [query]);
 
   return (
     <Wrapper>

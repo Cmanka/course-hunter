@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Loader } from '@/shared/components/loader';
@@ -11,14 +11,10 @@ import { AbsoluteBackground, Description, Title, Wrapper } from './styled';
 
 const CourseDetail: FC = () => {
   const { id } = useParams();
-  const { data, loading, query } = useQuery<Course>({
+  const { data, loading } = useQuery<Course>({
     method: 'GET',
     query: parseUrl(QueryKey.CourseDetail, id),
   });
-
-  useEffect(() => {
-    query();
-  }, [query]);
 
   if (loading) {
     return <Loader />;

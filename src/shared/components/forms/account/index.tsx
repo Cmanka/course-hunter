@@ -7,7 +7,7 @@ import { useSetRecoilState } from 'recoil';
 
 import { QueryKey } from '@/shared/constants/query-key';
 import { parseUrl } from '@/shared/helpers/parse-url';
-import { useQuery } from '@/shared/hooks/use-query';
+import { useMutation } from '@/shared/hooks/use-mutation';
 import { User } from '@/shared/interfaces/user';
 import { userState } from '@/shared/recoil/user';
 
@@ -26,15 +26,14 @@ const AccountForm: FC<AccountFormProps> = ({ user }) => {
   } = useForm<AccountFormHook, User>({
     defaultValues: { ...user },
   });
-  const { query, loading } = useQuery<User>({
+  const { mutate, loading } = useMutation<User>({
     method: 'PATCH',
     query: parseUrl(QueryKey.UserUpdate, user.id),
-    isQuery: false,
   });
   const setUser = useSetRecoilState(userState);
 
   const handleUpdate = handleSubmit((data) => {
-    query({ ...data }).then((user) => {
+    mutate({ ...data }).then((user) => {
       if (user) {
         setUser({ ...user });
         toast(t('userChanged'), { type: 'success' });

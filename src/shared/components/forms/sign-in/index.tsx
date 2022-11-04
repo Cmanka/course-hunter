@@ -9,7 +9,7 @@ import { QueryKey } from '@/shared/constants/query-key';
 import { emailValidate } from '@/shared/helpers/email-validate';
 import { passwordValidate } from '@/shared/helpers/password-validate';
 import { useLocalStorage } from '@/shared/hooks/use-local-storage';
-import { useQuery } from '@/shared/hooks/use-query';
+import { useMutation } from '@/shared/hooks/use-mutation';
 import { tokenState } from '@/shared/recoil/token';
 import { userState } from '@/shared/recoil/user';
 
@@ -25,10 +25,9 @@ const SignInForm: FC = memo(() => {
     formState: { errors },
     handleSubmit,
   } = useForm<Form>();
-  const { loading, query } = useQuery<SignInResponse, Form>({
+  const { loading, mutate } = useMutation<SignInResponse, Form>({
     method: 'POST',
     query: QueryKey.Login,
-    isQuery: false,
   });
   const { t } = useTranslation();
   const { set } = useLocalStorage();
@@ -37,7 +36,7 @@ const SignInForm: FC = memo(() => {
   const setUser = useSetRecoilState(userState);
 
   const handleConfirm = handleSubmit((data) => {
-    query(data).then((response) => {
+    mutate(data).then((response) => {
       if (response) {
         toast(t('welcome'), { type: 'success' });
         set('Token', response.accessToken);

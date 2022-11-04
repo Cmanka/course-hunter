@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { ApiUrl } from '../constants/api-url';
@@ -7,33 +7,26 @@ import { QueryMethod } from '../constants/query-method';
 import { ServerError } from '../interfaces/error';
 import { useLocalStorage } from './use-local-storage';
 
-interface Options<TVariables> {
+interface Options {
   query: QueryKey | string;
   method: keyof typeof QueryMethod;
   api?: string;
-  variables?: TVariables;
-  isFetch?: boolean;
 }
 
-const useQuery = <TResult, TVariables = {}>(
-  {
-    api = ApiUrl.Python,
-    query,
-    method,
-    variables,
-    isFetch = true,
-  }: Options<TVariables>,
+const useMutation = <TResult, TVariables = {}>(
+  { api = ApiUrl.Python, query, method }: Options,
   defaultValue = null as TResult
 ) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState<TResult>(defaultValue);
   const [error, setError] = useState();
   const { get } = useLocalStorage();
   const token = get('Token');
 
-  useEffect(() => {
-    if (isFetch) {
-      fetch(`${api}/${query}`, {
+  const handleFetch = useCallback(
+    (variables?: TVariables) => {
+      setLoading(true);
+      return fetch(`${api}/${query}`, {
         method,
         headers: {
           'Content-Type': 'application/json',
@@ -57,10 +50,11 @@ const useQuery = <TResult, TVariables = {}>(
         .finally(() => {
           setLoading(false);
         });
-    }
-  }, [api, isFetch, method, query, token, variables]);
+    },
+    [api, method, query, token]
+  );
 
-  return { loading, data, error };
+  return { loading, mutate: handleFetch, data, error };
 };
 
-export { useQuery };
+export { useMutation };

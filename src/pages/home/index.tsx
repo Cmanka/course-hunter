@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Categories } from '@/shared/components/categories';
@@ -19,14 +19,10 @@ import {
 const Home: FC = () => {
   const { t } = useTranslation();
 
-  const { data, loading, query } = useQuery<Course[]>({
+  const { data, loading } = useQuery<Course[]>({
     method: 'GET',
     query: QueryKey.Course,
   });
-
-  useEffect(() => {
-    query();
-  }, [query]);
 
   if (loading) {
     return <Loader />;

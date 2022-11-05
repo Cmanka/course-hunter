@@ -1,16 +1,16 @@
 import logo from '@assets/header-logo.svg';
 import { Button } from 'grommet';
-import { User } from 'grommet-icons';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { useSignInModal } from '@/shared/components/modals/sign-in';
 import { useSignUpModal } from '@/shared/components/modals/sign-up';
 import { AppRoutes } from '@/shared/constants/app-routes';
 import { useLocalStorage } from '@/shared/hooks/use-local-storage';
 import { tokenState } from '@/shared/recoil/token';
+import { userState } from '@/shared/recoil/user';
 
 import {
   Avatar,
@@ -27,6 +27,7 @@ const Header: FC = () => {
   const [openSignUp] = useSignUpModal();
   const { remove } = useLocalStorage();
   const [token, setToken] = useRecoilState(tokenState);
+  const user = useRecoilValue(userState);
 
   const handleSignIn = () => {
     openSignIn();
@@ -57,9 +58,11 @@ const Header: FC = () => {
         <ButtonsWrapper>
           {token && (
             <>
-              <Avatar background="brand" onClick={handleToAccount}>
-                <User />
-              </Avatar>
+              <Avatar
+                src={user?.image}
+                background="brand"
+                onClick={handleToAccount}
+              />
               <Button label={t`logout`} secondary onClick={handleLogout} />
             </>
           )}

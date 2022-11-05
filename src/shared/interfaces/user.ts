@@ -11,4 +11,5 @@ export interface User {
   firstname: string;
   lastname: string;
   account: Account;
+  image: string;
 }

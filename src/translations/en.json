@@ -29,6 +29,14 @@
     "titleHome": "Welcome to the Course Hunter",
     "subTitleHome": "A resource of programming video tutorials for developers. Take your profile knowledge from us, because we're the fucking best. Seriously.",
     "courseTitle": "Last added courses",
-    "view": "View"
+    "view": "View",
+    "duration": "Duration",
+    "source": "Source",
+    "countOfLessons": "Count of lessons",
+    "createdAt": "Created at",
+    "language": "Language",
+    "allCourses": "All Courses",
+    "allCoursesDescription": "List of ALL available courses",
+    "search": "Search"
   }
 }

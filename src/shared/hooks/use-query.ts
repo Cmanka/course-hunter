@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import { ApiUrl } from '../constants/api-url';
 import { QueryKey } from '../constants/query-key';
 import { QueryMethod } from '../constants/query-method';
 import { ServerError } from '../interfaces/error';
+import { parseQueryUrl } from './../helpers/parse-query-url';
 import { useLocalStorage } from './use-local-storage';
 
 interface Options<TVariables> {
@@ -15,14 +15,8 @@ interface Options<TVariables> {
   isFetch?: boolean;
 }
 
-const useQuery = <TResult, TVariables = {}>(
-  {
-    api = ApiUrl.Python,
-    query,
-    method,
-    variables,
-    isFetch = true,
-  }: Options<TVariables>,
+const useQuery = <TResult, TVariables = { [key: string]: string }>(
+  { query, method, variables, isFetch = true }: Options<TVariables>,
   defaultValue = null as TResult
 ) => {
   const [loading, setLoading] = useState(true);
@@ -33,13 +27,13 @@ const useQuery = <TResult, TVariables = {}>(
 
   useEffect(() => {
     if (isFetch) {
-      fetch(`${api}/${query}`, {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      fetch(parseQueryUrl(query, variables as any), {
         method,
         headers: {
           'Content-Type': 'application/json',
           Authorization: token ? `Bearer ${token}` : '',
         },
-        body: JSON.stringify(variables),
       })
         .then((response) => response.json() as TResult | ServerError)
         .then((data) => {
@@ -58,7 +52,7 @@ const useQuery = <TResult, TVariables = {}>(
           setLoading(false);
         });
     }
-  }, [api, isFetch, method, query, token, variables]);
+  }, [isFetch, method, query, token, variables]);
 
   return { loading, data, error };
 };

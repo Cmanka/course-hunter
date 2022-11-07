@@ -1,11 +1,11 @@
 import { Course } from '@/shared/interfaces/course';
 
 enum Key {
-  Duration = 'study_hours',
-  Source = 'publisher__username',
-  СountOfLessons = 'count_lessons',
-  CreatedAt = 'created_at',
-  Language = 'language',
+  duration = 'study_hours',
+  source = 'publisher__username',
+  countOfLessons = 'count_lessons',
+  createdAt = 'created_at',
+  language = 'language',
 }
 
 export const getDetails = (course: Course) => {

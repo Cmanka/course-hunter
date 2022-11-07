@@ -1,4 +1,4 @@
-import { Box, Text } from 'grommet';
+import { Box, Button, Text } from 'grommet';
 import styled from 'styled-components';
 
 import { Container } from '@/shared/styles/container';
@@ -32,4 +32,10 @@ export const CourseTitle = styled(Text)`
   text-align: center;
   margin-bottom: 40px;
   margin-top: 40px;
+`;
+
+export const MoreButton = styled(Button)`
+  max-width: 260px;
+  width: 100%;
+  margin: 0 auto;
 `;

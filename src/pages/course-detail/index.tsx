@@ -5,13 +5,12 @@ import { useParams } from 'react-router-dom';
 
 import { Loader } from '@/shared/components/loader';
 import { QueryKey } from '@/shared/constants/query-key';
+import { getDetails } from '@/shared/helpers/get-card-details';
 import { parseUrl } from '@/shared/helpers/parse-url';
 import { useQuery } from '@/shared/hooks/use-query';
 import { Course } from '@/shared/interfaces/course';
 
-import { getDetails } from './data';
 import {
-  AbsoluteBackground,
   Description,
   InfoLabel,
   InfoValue,
@@ -37,7 +36,6 @@ const CourseDetail: FC = () => {
 
   return (
     <Wrapper>
-      <AbsoluteBackground />
       <TopWrapper>
         <Box>
           <Title>{data.title}</Title>

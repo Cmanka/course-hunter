@@ -10,10 +10,6 @@
     "lint": "eslint src/"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "eslint --cache --max-warnings 0",
-      "prettier --write"
-    ],
     "*.json": [
       "prettier --write"
     ]

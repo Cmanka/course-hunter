@@ -1,10 +1,11 @@
 import { TextInput } from 'grommet';
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { ChangeEvent, FC, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { CourseCard } from '@/shared/components/course-card';
 import { Loader } from '@/shared/components/loader';
 import { QueryKey } from '@/shared/constants/query-key';
+import { useDebounce } from '@/shared/hooks/use-debounce';
 import { useQuery } from '@/shared/hooks/use-query';
 import { Course } from '@/shared/interfaces/course';
 import { HeadSection } from '@/shared/styles/head-section';
@@ -21,10 +22,16 @@ import { CoursesFiltersVariables } from './types';
 const Courses: FC = () => {
   const { t } = useTranslation();
   const [title, setTitle] = useState('');
+  const debouncedTitle = useDebounce(title);
+  const variables = useMemo(
+    () => ({ title: debouncedTitle }),
+    [debouncedTitle]
+  );
   const { data, loading } = useQuery<Course[], CoursesFiltersVariables>(
     {
       method: 'GET',
       query: QueryKey.Course,
+      variables,
     },
     []
   );
@@ -50,7 +57,7 @@ const Courses: FC = () => {
           />
         </InputWrapper>
       </HeadSection>
-      {data.length && (
+      {data.length > 0 && (
         <CoursesWrapper>
           {data.map((data) => (
             <CourseCard key={data.id} {...data} />

@@ -15,7 +15,7 @@ interface Options<TVariables> {
   isFetch?: boolean;
 }
 
-const useQuery = <TResult, TVariables = { [key: string]: string }>(
+const useQuery = <TResult, TVariables>(
   { query, method, variables, isFetch = true }: Options<TVariables>,
   defaultValue = null as TResult
 ) => {
@@ -27,8 +27,7 @@ const useQuery = <TResult, TVariables = { [key: string]: string }>(
 
   useEffect(() => {
     if (isFetch) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      fetch(parseQueryUrl(query, variables as any), {
+      fetch(parseQueryUrl(query, variables), {
         method,
         headers: {
           'Content-Type': 'application/json',

@@ -112,7 +112,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     box-sizing: border-box;
   }
   #root {
-    & > div:nth-child(2) {
+    & > div {
       min-height: 100vh;
       display: flex;
       flex-direction: column;

@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 
 import { toastState } from '@/shared/recoil/toast';
 
-import { ToastText, ToastWrapper } from './styled';
+import { ToastText, ToastWrapper, Wrapper } from './styled';
 
 const ToastContainer: FC = () => {
   const [toasts, setToasts] = useRecoilState(toastState);
@@ -20,7 +20,7 @@ const ToastContainer: FC = () => {
   }
 
   return (
-    <>
+    <Wrapper>
       {toasts.map(({ id, text }) => {
         return (
           <ToastWrapper key={id} onClick={handleClose(id)}>
@@ -29,7 +29,7 @@ const ToastContainer: FC = () => {
           </ToastWrapper>
         );
       })}
-    </>
+    </Wrapper>
   );
 };
 

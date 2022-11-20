@@ -7,16 +7,7 @@
     "build": "vite build",
     "dev": "vite",
     "prepare": "husky install",
-    "lint": "eslint src/"
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "eslint --cache --max-warnings 0",
-      "prettier --write"
-    ],
-    "*.json": [
-      "prettier --write"
-    ]
+    "lint": "eslint --max-warnings 0 src/"
   },
   "dependencies": {
     "grommet": "^2.26.0",

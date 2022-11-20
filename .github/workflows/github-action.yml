@@ -1,6 +1,10 @@
 name: github-action
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+run-name: Deploy by ${{ github.actor }}
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   init:
     runs-on: ubuntu-latest

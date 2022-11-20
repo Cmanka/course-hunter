@@ -15,7 +15,7 @@ interface Options<TVariables> {
   isFetch?: boolean;
 }
 
-const useQuery = <TResult, TVariables>(
+const useQuery = <TResult, TVariables = {}>(
   { query, method, variables, isFetch = true }: Options<TVariables>,
   defaultValue = null as TResult
 ) => {

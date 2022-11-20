@@ -1,20 +1,21 @@
 import { useCallback, useState } from 'react';
-import { toast } from 'react-toastify';
 
 import { ApiUrl } from '../constants/api-url';
 import { QueryKey } from '../constants/query-key';
 import { QueryMethod } from '../constants/query-method';
 import { ServerError } from '../interfaces/error';
 import { useLocalStorage } from './use-local-storage';
+import { useToast } from './use-toast';
 
-interface Options {
+interface Options<TVariables> {
   query: QueryKey | string;
   method: keyof typeof QueryMethod;
   api?: string;
+  variables?: TVariables;
 }
 
 const useMutation = <TResult, TVariables = {}>(
-  { api = ApiUrl.Python, query, method }: Options,
+  { api = ApiUrl.Python, query, method }: Options<TVariables>,
   defaultValue = null as TResult
 ) => {
   const [loading, setLoading] = useState(false);
@@ -22,6 +23,7 @@ const useMutation = <TResult, TVariables = {}>(
   const [error, setError] = useState();
   const { get } = useLocalStorage();
   const token = get('Token');
+  const { addToast } = useToast();
 
   const handleFetch = useCallback(
     (variables?: TVariables) => {
@@ -45,13 +47,13 @@ const useMutation = <TResult, TVariables = {}>(
         })
         .catch(({ message }) => {
           setError(message);
-          toast(message, { type: 'error' });
+          addToast({ text: message, type: 'Error' });
         })
         .finally(() => {
           setLoading(false);
         });
     },
-    [api, method, query, token]
+    [addToast, api, method, query, token]
   );
 
   return { loading, mutate: handleFetch, data, error };

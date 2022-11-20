@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 
 import { QueryKey } from '../constants/query-key';
 import { QueryMethod } from '../constants/query-method';
 import { ServerError } from '../interfaces/error';
 import { parseQueryUrl } from './../helpers/parse-query-url';
 import { useLocalStorage } from './use-local-storage';
+import { useToast } from './use-toast';
 
 interface Options<TVariables> {
   query: QueryKey | string;
@@ -24,6 +24,7 @@ const useQuery = <TResult, TVariables = {}>(
   const [error, setError] = useState();
   const { get } = useLocalStorage();
   const token = get('Token');
+  const { addToast } = useToast();
 
   useEffect(() => {
     if (isFetch) {
@@ -45,13 +46,13 @@ const useQuery = <TResult, TVariables = {}>(
         })
         .catch(({ message }) => {
           setError(message);
-          toast(message, { type: 'error' });
+          addToast({ text: message, type: 'Error' });
         })
         .finally(() => {
           setLoading(false);
         });
     }
-  }, [isFetch, method, query, token, variables]);
+  }, [addToast, isFetch, method, query, token, variables]);
 
   return { loading, data, error };
 };

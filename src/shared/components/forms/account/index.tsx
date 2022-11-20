@@ -2,12 +2,12 @@ import { TextInput } from 'grommet';
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
 import { useSetRecoilState } from 'recoil';
 
 import { QueryKey } from '@/shared/constants/query-key';
 import { parseUrl } from '@/shared/helpers/parse-url';
 import { useMutation } from '@/shared/hooks/use-mutation';
+import { useToast } from '@/shared/hooks/use-toast';
 import { User } from '@/shared/interfaces/user';
 import { userState } from '@/shared/recoil/user';
 
@@ -19,6 +19,7 @@ import { AccountFormHook, AccountFormProps } from './types';
 
 const AccountForm: FC<AccountFormProps> = ({ user }) => {
   const { t } = useTranslation();
+  const { addToast } = useToast();
   const {
     register,
     handleSubmit,
@@ -36,7 +37,7 @@ const AccountForm: FC<AccountFormProps> = ({ user }) => {
     mutate({ ...data }).then((user) => {
       if (user) {
         setUser({ ...user });
-        toast(t('userChanged'), { type: 'success' });
+        addToast({ text: 'userChanged', type: 'Success' });
       }
     });
   });

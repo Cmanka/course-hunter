@@ -2,7 +2,6 @@ import { TextInput } from 'grommet';
 import React, { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
 import { useSetRecoilState } from 'recoil';
 
 import { QueryKey } from '@/shared/constants/query-key';
@@ -10,6 +9,7 @@ import { emailValidate } from '@/shared/helpers/email-validate';
 import { passwordValidate } from '@/shared/helpers/password-validate';
 import { useLocalStorage } from '@/shared/hooks/use-local-storage';
 import { useMutation } from '@/shared/hooks/use-mutation';
+import { useToast } from '@/shared/hooks/use-toast';
 import { tokenState } from '@/shared/recoil/token';
 import { userState } from '@/shared/recoil/user';
 
@@ -34,11 +34,12 @@ const SignUpForm: FC = memo(() => {
   const [, close] = useSignUpModal();
   const setToken = useSetRecoilState(tokenState);
   const setUser = useSetRecoilState(userState);
+  const { addToast } = useToast();
 
   const handleConfirm = handleSubmit((data) => {
     mutate(data).then((response) => {
       if (response) {
-        toast(t('welcome'), { type: 'success' });
+        addToast({ text: 'welcome', type: 'Success' });
         set('Token', response.accessToken);
         setToken(response.accessToken);
         setUser(response.user);

@@ -1,6 +1,5 @@
 import { Heading } from 'grommet';
 import React, { Component, ErrorInfo } from 'react';
-import { toast } from 'react-toastify';
 
 import { Props, State } from './types';
 
@@ -15,7 +14,6 @@ class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo);
-    toast(error.message, { type: 'error' });
   }
 
   render() {

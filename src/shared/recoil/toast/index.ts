@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
-import { RecoilAtomKey } from '../constants/recoil-atom-key';
-import { Toast } from '../interfaces/toast';
+import { RecoilAtomKey } from '@/shared/constants/recoil-atom-key';
+import { Toast } from '@/shared/interfaces/toast';
 
 const toastState = atom<Toast[]>({
   key: RecoilAtomKey.ToastState,

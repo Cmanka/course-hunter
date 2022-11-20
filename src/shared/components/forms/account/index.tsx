@@ -7,8 +7,8 @@ import { useSetRecoilState } from 'recoil';
 import { QueryKey } from '@/shared/constants/query-key';
 import { parseUrl } from '@/shared/helpers/parse-url';
 import { useMutation } from '@/shared/hooks/use-mutation';
-import { useToast } from '@/shared/hooks/use-toast';
 import { User } from '@/shared/interfaces/user';
+import { useToast } from '@/shared/recoil/toast/hook';
 import { userState } from '@/shared/recoil/user';
 
 import { LabelWrapper } from '../../label-wrapper';

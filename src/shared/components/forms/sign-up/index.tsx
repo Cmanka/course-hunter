@@ -9,7 +9,7 @@ import { emailValidate } from '@/shared/helpers/email-validate';
 import { passwordValidate } from '@/shared/helpers/password-validate';
 import { useLocalStorage } from '@/shared/hooks/use-local-storage';
 import { useMutation } from '@/shared/hooks/use-mutation';
-import { useToast } from '@/shared/hooks/use-toast';
+import { useToast } from '@/shared/recoil/toast/hook';
 import { tokenState } from '@/shared/recoil/token';
 import { userState } from '@/shared/recoil/user';
 

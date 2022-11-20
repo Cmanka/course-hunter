@@ -4,8 +4,8 @@ import { ApiUrl } from '../constants/api-url';
 import { QueryKey } from '../constants/query-key';
 import { QueryMethod } from '../constants/query-method';
 import { ServerError } from '../interfaces/error';
+import { useToast } from '../recoil/toast/hook';
 import { useLocalStorage } from './use-local-storage';
-import { useToast } from './use-toast';
 
 interface Options<TVariables> {
   query: QueryKey | string;

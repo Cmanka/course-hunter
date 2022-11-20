@@ -2,8 +2,9 @@ import { useCallback } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
 
-import { Toast } from '../interfaces/toast';
-import { toastState } from '../recoil/toast';
+import { Toast } from '@/shared/interfaces/toast';
+
+import { toastState } from '.';
 
 const TIME_TO_CLOSE = 2500;
 

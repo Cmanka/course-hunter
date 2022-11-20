@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { QueryKey } from '../constants/query-key';
 import { QueryMethod } from '../constants/query-method';
 import { ServerError } from '../interfaces/error';
+import { useToast } from '../recoil/toast/hook';
 import { parseQueryUrl } from './../helpers/parse-query-url';
 import { useLocalStorage } from './use-local-storage';
-import { useToast } from './use-toast';
 
 interface Options<TVariables> {
   query: QueryKey | string;

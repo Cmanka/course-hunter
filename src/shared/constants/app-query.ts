@@ -1,9 +1,9 @@
-export enum QueryKey {
+export enum AppQuery {
   Login = 'api/users/login',
   Register = 'api/users/register',
   UserPersonal = 'api/users/personal',
   UserUpdate = 'api/users/:id',
-  Course = 'api/courses',
+  Courses = 'api/courses',
   CourseDetail = 'api/courses/:id',
   Category = 'api/categories',
 }

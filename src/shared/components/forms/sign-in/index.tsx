@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useSetRecoilState } from 'recoil';
 
-import { QueryKey } from '@/shared/constants/query-key';
+import { AppQuery } from '@/shared/constants/app-query';
 import { emailValidate } from '@/shared/helpers/email-validate';
 import { passwordValidate } from '@/shared/helpers/password-validate';
 import { useLocalStorage } from '@/shared/hooks/use-local-storage';
@@ -27,7 +27,7 @@ const SignInForm: FC = memo(() => {
   } = useForm<Form>();
   const { loading, mutate } = useMutation<SignInResponse, Form>({
     method: 'POST',
-    query: QueryKey.Login,
+    query: AppQuery.Login,
   });
   const { t } = useTranslation();
   const { set } = useLocalStorage();

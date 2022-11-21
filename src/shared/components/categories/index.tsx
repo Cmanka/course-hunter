@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
+import { AppQuery } from '@/shared/constants/app-query';
 import { AppRoutes } from '@/shared/constants/app-routes';
-import { QueryKey } from '@/shared/constants/query-key';
 import { parseUrl } from '@/shared/helpers/parse-url';
 import { useQuery } from '@/shared/hooks/use-query';
 import { Category } from '@/shared/interfaces/category';
@@ -12,7 +12,7 @@ const Categories: FC = () => {
   const { data } = useQuery<Category[]>(
     {
       method: 'GET',
-      query: QueryKey.Category,
+      query: AppQuery.Category,
     },
     []
   );

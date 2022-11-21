@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import { QueryKey } from '../constants/query-key';
+import { AppQuery } from '../constants/app-query';
 import { QueryMethod } from '../constants/query-method';
 import { ServerError } from '../interfaces/error';
 import { useToast } from '../recoil/toast/hook';
-import { parseQueryUrl } from './../helpers/parse-query-url';
 import { useLocalStorage } from './use-local-storage';
 
 interface Options<TVariables> {
-  query: QueryKey | string;
+  query: AppQuery | string;
   method: keyof typeof QueryMethod;
   api?: string;
   variables?: TVariables;
@@ -28,7 +27,7 @@ const useQuery = <TResult, TVariables = {}>(
 
   useEffect(() => {
     if (isFetch) {
-      fetch(parseQueryUrl(query, variables), {
+      fetch('', {
         method,
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +45,6 @@ const useQuery = <TResult, TVariables = {}>(
         })
         .catch(({ message }) => {
           setError(message);
-          addToast({ text: message, type: 'Error' });
         })
         .finally(() => {
           setLoading(false);

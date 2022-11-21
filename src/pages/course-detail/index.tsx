@@ -2,13 +2,10 @@ import { Box, Image } from 'grommet';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
-import { Loader } from '@/shared/components/loader';
-import { QueryKey } from '@/shared/constants/query-key';
 import { getDetails } from '@/shared/helpers/get-card-details';
-import { parseUrl } from '@/shared/helpers/parse-url';
-import { useQuery } from '@/shared/hooks/use-query';
-import { Course } from '@/shared/interfaces/course';
+import { courseById } from '@/shared/recoil/course';
 
 import {
   Description,
@@ -25,31 +22,24 @@ import {
 const CourseDetail: FC = () => {
   const { id } = useParams();
   const { t } = useTranslation();
-  const { data, loading } = useQuery<Course>({
-    method: 'GET',
-    query: parseUrl(QueryKey.CourseDetail, id),
-  });
-
-  if (loading) {
-    return <Loader />;
-  }
+  const course = useRecoilValue(courseById({ id }));
 
   return (
     <Wrapper>
       <TopWrapper>
         <Box>
-          <Title>{data.title}</Title>
-          <Description>{data.description}</Description>
+          <Title>{course.title}</Title>
+          <Description>{course.description}</Description>
           <Rate>
-            +{data.rated.like}/-{data.rated.dislike}
+            +{course.rated.like}/-{course.rated.dislike}
           </Rate>
         </Box>
-        <Owner>{data.publisher__username}</Owner>
+        <Owner>{course.publisher__username}</Owner>
       </TopWrapper>
       <InfoWrapper>
-        <Image src={data.preview} />
+        <Image src={course.preview} />
         <Box direction="row" gap="20px">
-          {getDetails(data).map(({ label, value }) => (
+          {getDetails(course).map(({ label, value }) => (
             <Box key={label}>
               <InfoLabel>{t(label)}</InfoLabel>
               <InfoValue>{value}</InfoValue>

@@ -1,21 +1,20 @@
 import { useCallback, useState } from 'react';
 
-import { ApiUrl } from '../constants/api-url';
-import { QueryKey } from '../constants/query-key';
+import { AppQuery } from '../constants/app-query';
 import { QueryMethod } from '../constants/query-method';
 import { ServerError } from '../interfaces/error';
 import { useToast } from '../recoil/toast/hook';
 import { useLocalStorage } from './use-local-storage';
 
 interface Options<TVariables> {
-  query: QueryKey | string;
+  query: AppQuery | string;
   method: keyof typeof QueryMethod;
   api?: string;
   variables?: TVariables;
 }
 
 const useMutation = <TResult, TVariables = {}>(
-  { api = ApiUrl.Python, query, method }: Options<TVariables>,
+  { method }: Options<TVariables>,
   defaultValue = null as TResult
 ) => {
   const [loading, setLoading] = useState(false);
@@ -28,7 +27,7 @@ const useMutation = <TResult, TVariables = {}>(
   const handleFetch = useCallback(
     (variables?: TVariables) => {
       setLoading(true);
-      return fetch(`${api}/${query}`, {
+      return fetch(``, {
         method,
         headers: {
           'Content-Type': 'application/json',
@@ -53,7 +52,7 @@ const useMutation = <TResult, TVariables = {}>(
           setLoading(false);
         });
     },
-    [addToast, api, method, query, token]
+    [addToast, method, token]
   );
 
   return { loading, mutate: handleFetch, data, error };

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useSetRecoilState } from 'recoil';
 
-import { QueryKey } from '@/shared/constants/query-key';
+import { AppQuery } from '@/shared/constants/app-query';
 import { parseUrl } from '@/shared/helpers/parse-url';
 import { useMutation } from '@/shared/hooks/use-mutation';
 import { User } from '@/shared/interfaces/user';
@@ -29,7 +29,7 @@ const AccountForm: FC<AccountFormProps> = ({ user }) => {
   });
   const { mutate, loading } = useMutation<User>({
     method: 'PATCH',
-    query: parseUrl(QueryKey.UserUpdate, user.id),
+    query: parseUrl(AppQuery.UserUpdate, user.id),
   });
   const setUser = useSetRecoilState(userState);
 

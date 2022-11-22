@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-import { Toast } from '@/shared/interfaces/toast';
+import { Toast } from '@/shared/interfaces/app/toast';
 
 import { RecoilToastKeys } from './keys';
 

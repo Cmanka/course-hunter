@@ -2,14 +2,8 @@ import { TextInput } from 'grommet';
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useSetRecoilState } from 'recoil';
 
-import { AppQuery } from '@/shared/constants/app-query';
-import { parseUrl } from '@/shared/helpers/parse-url';
-import { useMutation } from '@/shared/hooks/use-mutation';
-import { User } from '@/shared/interfaces/user';
-import { useToast } from '@/shared/recoil/toast/hook';
-import { userState } from '@/shared/recoil/user';
+import { User } from '@/shared/interfaces/app/user';
 
 import { LabelWrapper } from '../../label-wrapper';
 import { LanguageSelect } from '../../language-select';
@@ -19,7 +13,6 @@ import { AccountFormHook, AccountFormProps } from './types';
 
 const AccountForm: FC<AccountFormProps> = ({ user }) => {
   const { t } = useTranslation();
-  const { addToast } = useToast();
   const {
     register,
     handleSubmit,
@@ -27,20 +20,8 @@ const AccountForm: FC<AccountFormProps> = ({ user }) => {
   } = useForm<AccountFormHook, User>({
     defaultValues: { ...user },
   });
-  const { mutate, loading } = useMutation<User>({
-    method: 'PATCH',
-    query: parseUrl(AppQuery.UserUpdate, user.id),
-  });
-  const setUser = useSetRecoilState(userState);
 
-  const handleUpdate = handleSubmit((data) => {
-    mutate({ ...data }).then((user) => {
-      if (user) {
-        setUser({ ...user });
-        addToast({ text: 'userChanged', type: 'Success' });
-      }
-    });
-  });
+  const handleUpdate = handleSubmit(() => {});
 
   return (
     <Wrapper>
@@ -85,7 +66,7 @@ const AccountForm: FC<AccountFormProps> = ({ user }) => {
       </LabelWrapper>
       <LanguageSelect />
       <UpdateButton
-        disabled={!isDirty || loading}
+        disabled={!isDirty}
         primary
         onClick={handleUpdate}
       >{t`update`}</UpdateButton>

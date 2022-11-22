@@ -1,25 +1,15 @@
 import React, { FC } from 'react';
 
-import { AppQuery } from '@/shared/constants/app-query';
-import { AppRoutes } from '@/shared/constants/app-routes';
+import { AppRoutes } from '@/shared/constants/app/app-routes';
 import { parseUrl } from '@/shared/helpers/parse-url';
-import { useQuery } from '@/shared/hooks/use-query';
-import { Category } from '@/shared/interfaces/category';
 
 import { Card, Wrapper } from './styled';
+import { CategoriesProps } from './types';
 
-const Categories: FC = () => {
-  const { data } = useQuery<Category[]>(
-    {
-      method: 'GET',
-      query: AppQuery.Category,
-    },
-    []
-  );
-
+const Categories: FC<CategoriesProps> = ({ categories }) => {
   return (
     <Wrapper>
-      {data.map(({ id, logo, title }) => (
+      {categories.map(({ id, logo, title }) => (
         <Card key={id} to={parseUrl(AppRoutes.Category, id)}>
           <img src={logo} />
           {title}

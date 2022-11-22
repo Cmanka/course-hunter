@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { v4 as uuid } from 'uuid';
 
-import { Toast } from '@/shared/interfaces/toast';
+import { Toast } from '@/shared/interfaces/app/toast';
 
 import { toastState } from '.';
 

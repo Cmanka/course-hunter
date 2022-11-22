@@ -1,4 +1,4 @@
-import { Difficult } from '../constants/difficult';
+import { Difficult } from '../../constants/course/difficult';
 import { Category } from './category';
 import { Rate } from './rate';
 

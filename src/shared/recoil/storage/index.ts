@@ -1,6 +1,6 @@
 import { selectorFamily } from 'recoil';
 
-import { StorageKey } from '@/shared/constants/storage-key';
+import { StorageKey } from '@/shared/constants/app/storage-key';
 
 import { RecoilStorageKeys } from './keys';
 

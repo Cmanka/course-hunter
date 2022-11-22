@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil';
 
 import { Categories } from '@/shared/components/categories';
 import { CourseCard } from '@/shared/components/course-card';
-import { AppRoutes } from '@/shared/constants/app-routes';
+import { AppRoutes } from '@/shared/constants/app/app-routes';
 import { coursesState } from '@/shared/recoil/course';
 
 import {
@@ -30,7 +30,7 @@ const Home: FC = () => {
     <Wrapper>
       <Title>{t('titleHome')}</Title>
       <SubTitle>{t('subTitleHome')}</SubTitle>
-      <Categories />
+      <Categories categories={[]} />
       <CourseTitle>{t('courseTitle')}</CourseTitle>
       {courses.length && (
         <CoursesWrapper>

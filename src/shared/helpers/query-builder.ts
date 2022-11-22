@@ -1,7 +1,7 @@
-import { API_URL } from '../constants/api-url';
-import { AppQuery } from '../constants/app-query';
-import { QueryMethod } from '../constants/query-method';
-import { StorageKey } from '../constants/storage-key';
+import { API_URL } from '../constants/app/api-url';
+import { AppQuery } from '../constants/app/app-query';
+import { QueryMethod } from '../constants/app/query-method';
+import { StorageKey } from '../constants/app/storage-key';
 
 const parseUrl = <T>(query: string, variables: T) => {
   if (!variables) {

@@ -10,7 +10,6 @@ import { GlobalStyle } from '@/configuration/global-styles';
 import { Banner } from './components/banner';
 import { Footer } from './components/footer';
 import { Header } from './components/header';
-import { ModalContainer } from './components/modal-container';
 import { Router } from './components/router';
 import { ToastContainer } from './components/toast-container';
 import { theme } from './configuration/theme';
@@ -30,7 +29,6 @@ const App: FC = memo(() => {
         >
           <Grommet theme={theme}>
             <GlobalStyle />
-            <ModalContainer />
             <ToastContainer />
             <Header />
             <Banner />

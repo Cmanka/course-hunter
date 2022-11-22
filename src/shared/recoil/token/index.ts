@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil';
 
-import { StorageKey } from '@/shared/constants/storage-key';
+import { StorageKey } from '@/shared/constants/app/storage-key';
 
 import { storageValue } from '../storage';
 import { RecoilTokenKeys } from './keys';

@@ -1,4 +1,4 @@
-import { Language } from '@/shared/constants/language';
+import { Language } from '@/shared/constants/app/language';
 
 export interface Option {
   option: {

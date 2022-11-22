@@ -3,9 +3,9 @@ import React, { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import { AppRoutes } from '@/shared/constants/app-routes';
+import { AppRoutes } from '@/shared/constants/app/app-routes';
 import { parseUrl } from '@/shared/helpers/parse-url';
-import { Course } from '@/shared/interfaces/course';
+import { Course } from '@/shared/interfaces/course/course';
 
 import { ProductInfo, Wrapper } from './styled';
 

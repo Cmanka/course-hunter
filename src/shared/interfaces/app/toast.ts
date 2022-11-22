@@ -1,4 +1,4 @@
-import { ToastType } from '../constants/toast-type';
+import { ToastType } from '../../constants/app/toast-type';
 
 export interface Toast {
   id: string;

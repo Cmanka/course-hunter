@@ -1,4 +1,4 @@
-import { User } from '@/shared/interfaces/user';
+import { User } from '@/shared/interfaces/app/user';
 
 export interface Form {
   username: string;

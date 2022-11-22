@@ -1,4 +1,4 @@
-import { Course } from '@/shared/interfaces/course';
+import { Course } from '@/shared/interfaces/course/course';
 
 enum Key {
   duration = 'study_hours',

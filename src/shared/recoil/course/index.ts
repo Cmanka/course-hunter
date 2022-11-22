@@ -1,9 +1,9 @@
 import { atom, selector, selectorFamily } from 'recoil';
 
-import { AppQuery } from '@/shared/constants/app-query';
+import { AppQuery } from '@/shared/constants/app/app-query';
 import { parseUrl } from '@/shared/helpers/parse-url';
 import { queryBuilder } from '@/shared/helpers/query-builder';
-import { Course } from '@/shared/interfaces/course';
+import { Course } from '@/shared/interfaces/course/course';
 
 import { RecoilCourseKeys } from './keys';
 import { CourseById, CoursesFiltersVariables } from './types';
@@ -38,20 +38,16 @@ const courseById = selectorFamily<Course, CourseById>({
   key: RecoilCourseKeys.CourseById,
   get:
     ({ id }) =>
-    async ({ get }) => {
-      const fromState = get(coursesState).find(
-        ({ id: courseId }) => Number(id) === courseId
-      );
+    async () => {
+      try {
+        const course = await queryBuilder<Course>({
+          query: parseUrl(AppQuery.CourseDetail, id),
+        });
 
-      if (fromState) {
-        return fromState;
+        return course;
+      } catch (e) {
+        throw new Error('Cannot fetch course by id');
       }
-
-      const course = await queryBuilder<Course>({
-        query: parseUrl(AppQuery.CourseDetail, id),
-      });
-
-      return course;
     },
 });
 

@@ -2,7 +2,7 @@ import { Select } from 'grommet';
 import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Language } from '@/shared/constants/language';
+import { Language } from '@/shared/constants/app/language';
 
 import { Wrapper } from './styled';
 import { Option } from './types';

@@ -5,6 +5,7 @@ import { Account } from '@/pages/account';
 import { CourseDetail } from '@/pages/course-detail';
 import { Courses } from '@/pages/courses';
 import { Home } from '@/pages/home';
+import { SignIn } from '@/pages/sign-in';
 import { PrivateRoute } from '@/shared/components/private-route';
 import { AppRoutes } from '@/shared/constants/app/app-routes';
 
@@ -17,6 +18,7 @@ const Router: FC = () => {
         <Route path={AppRoutes.Home} element={<Home />} />
         <Route path={AppRoutes.Courses} element={<Courses />} />
         <Route path={AppRoutes.CoursesDetail} element={<CourseDetail />} />
+        <Route path={AppRoutes.SignIn} element={<SignIn />} />
         <Route
           path={AppRoutes.Account}
           element={

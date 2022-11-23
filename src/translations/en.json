@@ -37,6 +37,7 @@
     "language": "Language",
     "allCourses": "All Courses",
     "allCoursesDescription": "List of ALL available courses",
-    "search": "Search"
+    "search": "Search",
+    "signInTitle": "Please sign in to continue"
   }
 }

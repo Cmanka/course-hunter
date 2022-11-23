@@ -37,6 +37,7 @@
     "language": "Язык",
     "allCourses": "Все курсы",
     "allCoursesDescription": "Список ВСЕХ доступных курсов",
-    "search": "Поиск"
+    "search": "Поиск",
+    "signInTitle": "Пожалуйста авторизируйтесь чтобы продолжить"
   }
 }

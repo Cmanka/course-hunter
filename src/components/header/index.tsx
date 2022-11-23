@@ -21,7 +21,9 @@ const Header: FC = () => {
   const navigate = useNavigate();
   const user = useRecoilValue(userState);
 
-  const handleSignIn = () => {};
+  const handleSignIn = () => {
+    navigate(AppRoutes.SignIn);
+  };
 
   const handleSignUp = () => {};
 

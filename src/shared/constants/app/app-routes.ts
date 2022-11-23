@@ -4,4 +4,5 @@ export enum AppRoutes {
   CoursesDetail = '/courses/:id',
   Account = '/account',
   Category = '/category',
+  SignIn = '/sign-in',
 }

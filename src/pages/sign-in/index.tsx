@@ -1,28 +1,29 @@
 import { TextInput } from 'grommet';
-import React, { FC, memo } from 'react';
+import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
+import { ErrorHelper } from '@/shared/components/error-helper';
+import { PasswordInput } from '@/shared/components/password-input';
 import { emailValidate } from '@/shared/helpers/email-validate';
 import { passwordValidate } from '@/shared/helpers/password-validate';
 
-import { ErrorHelper } from '../../error-helper';
-import { PasswordInput } from '../../password-input';
-import { ConfirmButton, Wrapper } from './styled';
-import { Form } from './types';
+import { SignInButton, Title, Wrapper } from './styled';
+import { SignInForm } from './types';
 
-const SignInForm: FC = memo(() => {
+const SignIn: FC = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<Form>();
+  } = useForm<SignInForm>();
   const { t } = useTranslation();
 
   const handleConfirm = handleSubmit(() => {});
 
   return (
     <Wrapper>
+      <Title>{t`signInTitle`}</Title>
       <TextInput
         {...register('email', { validate: emailValidate })}
         placeholder={t('email')}
@@ -36,11 +37,9 @@ const SignInForm: FC = memo(() => {
         placeholder={t('password')}
       />
       <ErrorHelper error={errors.password} />
-      <ConfirmButton primary onClick={handleConfirm}>
-        {t('сonfirm')}
-      </ConfirmButton>
+      <SignInButton label={t`signIn`} primary onClick={handleConfirm} />
     </Wrapper>
   );
-});
+};
 
-export { SignInForm };
+export { SignIn };

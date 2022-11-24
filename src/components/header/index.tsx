@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
 import { AppRoutes } from '@/shared/constants/app/app-routes';
+import { logoutSelector } from '@/shared/recoil/auth';
 import { userState } from '@/shared/recoil/user';
 
 import {
@@ -20,6 +21,7 @@ const Header: FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const user = useRecoilValue(userState);
+  const { logout } = useRecoilValue(logoutSelector({}));
 
   const handleSignIn = () => {
     navigate(AppRoutes.SignIn);
@@ -32,6 +34,7 @@ const Header: FC = () => {
   };
 
   const handleLogout = () => {
+    logout();
     navigate(AppRoutes.Home);
   };
 

@@ -2,15 +2,15 @@ import { atom, selector } from 'recoil';
 
 import { StorageKey } from '@/shared/constants/app/storage-key';
 
-import { storageValue } from '../storage';
+import { storageSelector } from '../storage';
 import { RecoilTokenKeys } from './keys';
 
 const tokenByDefault = selector({
   key: RecoilTokenKeys.TokenSelector,
   get: ({ get }) => {
-    const token = get(storageValue(StorageKey.Token));
+    const { value } = get(storageSelector(StorageKey.Token));
 
-    return token;
+    return value;
   },
 });
 

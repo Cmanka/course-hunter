@@ -7,6 +7,7 @@ import { ServerError } from '@/shared/interfaces/app/error';
 import { tokenState } from '@/shared/recoil/token';
 
 import { storageSelector } from '../storage';
+import { addToastSelector } from '../toast';
 import { userState } from '../user';
 import { RecoilAuthKeys } from './keys';
 import {
@@ -31,13 +32,15 @@ const signInSelector = selectorFamily<SignInResult, {}>({
               variables,
             });
             const { setValue } = get(storageSelector(StorageKey.Token));
+            const { addToast } = get(addToastSelector({}));
 
             if ('detail' in result) {
-              return result.detail;
+              throw new Error(result.detail);
             }
 
             set(userState, result.user);
             set(tokenState, result.accessToken);
+            addToast({ text: 'welcome', type: 'Success' });
             setValue(StorageKey.Token, result.accessToken);
 
             return result;
